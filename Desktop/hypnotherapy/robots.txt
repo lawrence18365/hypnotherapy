@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Block access to admin areas (if applicable)
+Disallow: /admin/
+Disallow: /wp-admin/
+Disallow: /login/
+
+# Block common non-public directories
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /private/
+
+# Allow important files
+Allow: /media/
+Allow: /styles.css
+Allow: /script.js
+
+# Sitemap location
+Sitemap: https://serenityhypnotherapy.com/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1
