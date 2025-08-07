@@ -65,6 +65,7 @@ body {
 
 .preloader-content {
     text-align: center;
+    position: relative;
 }
 .preloader-video {
     width: 220px;
@@ -76,6 +77,23 @@ body {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
     background: #fffffd;
     display: block;
+    pointer-events: none; /* prevent any interaction overlay */
+}
+.preloader-content video::-webkit-media-controls,
+.preloader-content video::-webkit-media-controls-start-playback-button,
+.preloader-content video::-webkit-media-controls-overlay-play-button,
+.preloader-content video::-webkit-media-controls-enclosure {
+    display: none !important;
+    -webkit-appearance: none;
+}
+.preloader-content::after {
+    /* safety: ensure no overlay is visible above video */
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: transparent;
+    pointer-events: none;
 }
 
 .preloader-logo {
