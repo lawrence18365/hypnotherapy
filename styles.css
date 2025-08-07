@@ -66,6 +66,17 @@ body {
 .preloader-content {
     text-align: center;
 }
+.preloader-video {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    opacity: 0;
+    animation: logoFadeIn 1.2s ease-out 0.3s forwards;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    background: #fffffd;
+    display: block;
+}
 
 .preloader-logo {
     width: 220px;
@@ -149,44 +160,54 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(248, 245, 240, 0.95);
-    backdrop-filter: blur(10px);
+    background: transparent; /* match body, no tint */
     z-index: 1000;
     transition: var(--transition);
-    box-shadow: none;
+    box-shadow: none; /* no shadow at the bottom */
 }
 
 .nav-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* left-align content */
     align-items: center;
     padding: 1.5rem 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
+/* Force the nav to the far left edge of the viewport */
+.navbar .nav-container {
+    justify-content: flex-start;
+    margin-left: 0;
+    margin-right: auto;
+    max-width: none; /* remove centering constraint */
+    padding-left: 20px; /* small left padding for breathing room */
+}
+
 .nav-menu {
     display: flex;
-    gap: 3rem;
+    gap: 3rem; /* increase spacing between links */
+    align-items: center;
 }
 
 .nav-link {
     text-decoration: none;
-    color: var(--text-dark);
-    font-weight: 400;
-    font-size: 1rem;
-    letter-spacing: 1px;
-    transition: var(--transition);
+    color: var(--primary-color); /* match the blue */
+    font-weight: 700;
+    font-size: 1.05rem; /* make larger */
+    letter-spacing: 3px; /* airy feel per request (2-3px) */
+    transition: none; /* no hover effect transitions */
+    text-transform: uppercase; /* all caps */
+    font-family: var(--font-body), system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; /* clean sans-serif */
 }
 
 .nav-link:hover {
-    color: var(--secondary-color);
+    color: var(--primary-color); /* hover state = none (no visual change) */
 }
 
+/* No mobile toggle needed; always hidden */
 .nav-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
+    display: none !important;
 }
 
 .bar {
@@ -788,25 +809,31 @@ body {
 
 /* ===== Responsive Design ===== */
 @media (max-width: 768px) {
+    /* Keep the same horizontal nav on mobile; no slide-out */
     .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        flex-direction: column;
-        background-color: var(--white);
-        width: 100%;
-        text-align: center;
-        transition: var(--transition);
-        box-shadow: var(--shadow-medium);
-        padding: 2rem 0;
-    }
-
-    .nav-menu.active {
-        left: 0;
-    }
-
-    .nav-toggle {
+        position: static;
         display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1.5rem; /* slightly tighter gap for small screens */
+        width: auto;
+        padding: 0;
+        box-shadow: none;
+        background: transparent;
+        text-align: left;
+    }
+
+    .navbar .nav-container {
+        justify-content: flex-start;
+        max-width: none;
+        margin: 0;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .nav-link {
+        font-size: 0.95rem; /* still readable, fits 3 items */
+        letter-spacing: 2.5px;
     }
 
     .hero {
@@ -865,6 +892,19 @@ body {
 }
 
 @media (max-width: 480px) {
+    .preloader-video {
+        width: 120px;
+        height: 120px;
+    }
+    /* Ensure 3 links fit on very small screens too */
+    .nav-menu {
+        gap: 1rem;
+    }
+    .nav-link {
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+    }
+
     .hero-title {
         font-size: 2.5rem;
     }
