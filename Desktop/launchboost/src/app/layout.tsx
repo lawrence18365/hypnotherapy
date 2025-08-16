@@ -8,6 +8,7 @@ import { CookieConsent } from "@/components/compliance/CookieConsent";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { FacebookPixel } from "@/components/analytics/FacebookPixel";
+import { FacebookPixelDebug } from "@/components/debug/FacebookPixelDebug";
 
 export const metadata: Metadata = {
   title: "IndieSaasDeals - Premium SaaS Deals for Indie Hackers",
@@ -82,6 +83,7 @@ export default function RootLayout({
         <CookieConsent />
         <GoogleAnalytics />
         <FacebookPixel />
+        <FacebookPixelDebug />
       </body>
     </html>
   );

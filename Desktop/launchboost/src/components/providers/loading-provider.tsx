@@ -28,7 +28,7 @@ interface LoadingProviderProps {
 export function LoadingProvider({ 
   children, 
   showInitialLoader = true, 
-  minLoadingTime = 2800 
+  minLoadingTime = 2000 
 }: LoadingProviderProps) {
   const [isLoading, setIsLoading] = useState(showInitialLoader);
   const [contentVisible, setContentVisible] = useState(!showInitialLoader);
@@ -37,64 +37,60 @@ export function LoadingProvider({
     if (showInitialLoader) {
       // Prevent body scroll during loading
       document.body.style.overflow = 'hidden';
-      
-      const timer = setTimeout(() => {
-        setIsLoading(false);
-      }, minLoadingTime);
-
-      return () => {
-        clearTimeout(timer);
-        document.body.style.overflow = 'unset';
-      };
+      // Remove automatic timer - let preloader control when to finish
     }
-  }, [showInitialLoader, minLoadingTime]);
+  }, [showInitialLoader]);
 
   const setLoading = (loading: boolean) => {
     setIsLoading(loading);
     if (loading) {
       setContentVisible(false);
-      document.body.style.overflow = 'hidden';
+    }
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = loading ? 'hidden' : 'unset';
     }
   };
 
   const triggerPreloader = () => {
     setIsLoading(true);
     setContentVisible(false);
-    document.body.style.overflow = 'hidden';
-    
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = 'hidden';
+    }
     setTimeout(() => {
       setIsLoading(false);
-    }, 2500);
+    }, 1800);
   };
 
-  const handleComplete = () => {
-    setIsLoading(false);
-    // Smooth content reveal after preloader completes
-    setTimeout(() => {
+  // Sync content visibility to loader state
+  useEffect(() => {
+    if (!isLoading) {
       setContentVisible(true);
-      document.body.style.overflow = 'unset';
-    }, 200);
+    } else {
+      setContentVisible(false);
+    }
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = isLoading ? 'hidden' : 'unset';
+    }
+  }, [isLoading]);
+
+  const handlePreloaderComplete = () => {
+    setIsLoading(false);
   };
 
   return (
     <LoadingContext.Provider value={{ isLoading, setLoading, triggerPreloader }}>
-      {isLoading && (
-        <Preloader 
-          isLoading={isLoading} 
-          onComplete={handleComplete}
-        />
-      )}
+      <Preloader 
+        isLoading={isLoading} 
+        onComplete={handlePreloaderComplete}
+      />
       
-      {/* Content with smooth reveal animation */}
       <div 
-        className={`transition-all duration-700 ease-out ${
+        className={`transition-all duration-500 ease-out ${
           contentVisible 
             ? 'opacity-100 transform translate-y-0' 
             : 'opacity-0 transform translate-y-4'
         }`}
-        style={{
-          transitionDelay: contentVisible ? '0ms' : '0ms'
-        }}
       >
         {children}
       </div>
