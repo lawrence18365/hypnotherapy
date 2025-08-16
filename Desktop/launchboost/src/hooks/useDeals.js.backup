@@ -1,0 +1,28 @@
+import { useState, useEffect } from 'react';
+
+export const useDeals = () => {
+  const [deals, setDeals] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchDeals = async () => {
+      try {
+        // Replace with your actual API endpoint
+        const response = await fetch('/api/deals/premium');
+        if (!response.ok) throw new Error('Failed to fetch deals');
+        
+        const data = await response.json();
+        setDeals(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDeals();
+  }, []);
+
+  return { deals, loading, error };
+};

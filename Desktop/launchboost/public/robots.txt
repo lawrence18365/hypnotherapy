@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://launchboost.co/sitemap.xml
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /dashboard/settings/
+Disallow: /_next/
+
+# Allow important pages
+Allow: /deals/
+Allow: /about/
+Allow: /contact/
+Allow: /advertise/
+Allow: /feedback/
+
+# Crawl delay
+Crawl-delay: 1

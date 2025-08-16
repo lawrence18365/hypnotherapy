@@ -1,0 +1,459 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Professional Color System */
+    --background: 0 0% 100%;
+    --foreground: 222 15% 7%; /* #111 */
+    --card: 0 0% 100%;
+    --card-foreground: 222 15% 7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 15% 7%;
+    
+    /* LaunchBoost Brand Colors */
+    --primary: 222 15% 7%; /* #111111 LaunchBoost black */
+    --primary-foreground: 44 96% 68%; /* #fbf55c LaunchBoost yellow */
+    --primary-hover: 222 15% 15%;
+    
+    /* Clean Accent Colors */
+    --success: 142 69% 44%; /* #21C07A discount tags */
+    --success-foreground: 0 0% 100%;
+    --info: 199 91% 48%; /* #12B2E9 category chips */
+    --info-foreground: 0 0% 100%;
+    
+    /* Professional Grey Ramp */
+    --neutral-50: 220 13% 97%; /* #F7F8FA */
+    --neutral-100: 220 9% 93%; /* #ECEEF3 */
+    --neutral-200: 220 9% 89%; /* #E4E6F2 */
+    --neutral-300: 220 9% 78%; /* #C7CAD9 */
+    --neutral-400: 220 9% 65%; /* #A4A9BD */
+    --neutral-500: 220 9% 46%; /* #6B7280 */
+    --neutral-600: 220 14% 40%; /* #666 */
+    --neutral-700: 220 14% 30%; /* #4B5563 */
+    --neutral-800: 220 27% 18%; /* #222 */
+    --neutral-900: 222 15% 7%; /* #111 */
+    
+    --muted: 220 13% 97%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 220 13% 97%;
+    --accent-foreground: 222 15% 7%;
+    
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 220 9% 89%; /* #E4E6F2 */
+    --input: 220 9% 93%;
+    --ring: 222 15% 7%;
+    --radius: 0.625rem; /* 10px */
+    
+    /* Single Professional Gradient */
+    --gradient-primary: linear-gradient(135deg, hsl(222 15% 7%) 0%, hsl(222 15% 15%) 100%);
+  }
+
+  .dark {
+    --background: 222 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 222 15% 7%; /* LaunchBoost black for dark mode too */
+    --primary-foreground: 44 96% 68%; /* LaunchBoost yellow for dark mode */
+    --muted: 217 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --border: 217 32.6% 17.5%;
+    --input: 217 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    font-optical-sizing: auto;
+    line-height: 1.5;
+    letter-spacing: 0.1px;
+  }
+  
+  /* Professional Typography Scale */
+  h1 {
+    @apply scroll-m-20;
+    font-size: 3rem; /* 48px */
+    line-height: 3.5rem; /* 56px */
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h2 {
+    @apply scroll-m-20;
+    font-size: 2rem; /* 32px */
+    line-height: 2.5rem; /* 40px */
+    font-weight: 600;
+    letter-spacing: -0.3px;
+  }
+  
+  h3 {
+    @apply scroll-m-20;
+    font-size: 1.5rem; /* 24px */
+    line-height: 2rem; /* 32px */
+    font-weight: 600;
+    letter-spacing: -0.3px;
+  }
+  
+  h4 {
+    @apply scroll-m-20;
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.75rem; /* 28px */
+    font-weight: 600;
+    letter-spacing: -0.2px;
+  }
+  
+  h5 {
+    @apply scroll-m-20;
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.5rem; /* 24px */
+    font-weight: 600;
+    letter-spacing: -0.1px;
+  }
+  
+  p {
+    font-size: 1rem; /* 16px */
+    line-height: 1.5rem; /* 24px */
+    font-weight: 400;
+    letter-spacing: 0.1px;
+    color: hsl(var(--neutral-600));
+  }
+  
+  .text-small {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+    font-weight: 500;
+  }
+  
+  /* Mobile Typography Scale */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.5rem; /* 40px */
+      line-height: 3rem; /* 48px */
+    }
+    
+    h2 {
+      font-size: 1.75rem; /* 28px */
+      line-height: 2.25rem; /* 36px */
+    }
+    
+    h3 {
+      font-size: 1.25rem; /* 20px */
+      line-height: 1.75rem; /* 28px */
+    }
+    
+    p {
+      font-size: 0.9375rem; /* 15px */
+      line-height: 1.375rem; /* 22px */
+    }
+  }
+}
+
+@layer components {
+  /* Professional 12-Column Grid System */
+  .container-grid {
+    @apply container mx-auto px-6;
+    max-width: 1140px;
+  }
+  
+  .grid-col {
+    @apply px-3; /* 24px gutters (12px each side) */
+  }
+  
+  /* Professional Card System */
+  .card-professional {
+    @apply bg-white rounded-[10px] border;
+    border-color: hsl(var(--border));
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+    transition: all 0.2s ease;
+  }
+  
+  .card-professional:hover {
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+  }
+  
+  /* Deal Card Spec: 280x300, 10px radius, 1px border, subtle shadow */
+  .deal-card {
+    @apply bg-white rounded-[10px] border;
+    border-color: hsl(var(--border));
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+    width: 280px;
+    height: 300px;
+    padding: 24px;
+    transition: all 0.2s ease;
+  }
+  
+  .deal-card:hover {
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+  }
+  
+  /* Featured Deal Card: Purple border-ring + Featured badge */
+  .deal-card-featured {
+    @apply deal-card;
+    border-color: hsl(var(--primary));
+    border-width: 2px;
+    position: relative;
+  }
+  
+  /* Professional Button System */
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-[10px] px-6 py-3 font-medium transition-all duration-200;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    height: 44px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+  }
+  
+  .btn-primary:hover {
+    background: hsl(var(--primary-hover));
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px 0 hsl(var(--primary) / 0.3);
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-[10px] px-6 py-3 font-medium border transition-all duration-200;
+    background: white;
+    color: hsl(var(--foreground));
+    border-color: hsl(var(--border));
+    height: 44px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+  }
+  
+  .btn-secondary:hover {
+    background: hsl(var(--muted));
+    border-color: hsl(var(--primary));
+    transform: translateY(-1px);
+  }
+  
+  /* Professional Badge System */
+  .badge-featured {
+    @apply inline-flex items-center px-2 py-1 rounded-md text-xs font-medium;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+  }
+  
+  .badge-discount {
+    @apply inline-flex items-center px-2 py-1 rounded-md text-xs font-medium;
+    background: hsl(var(--success));
+    color: hsl(var(--success-foreground));
+    font-size: 11px;
+    font-weight: 600;
+  }
+  
+  .badge-category {
+    @apply inline-flex items-center px-2 py-1 rounded-md text-xs font-medium;
+    background: hsl(var(--info));
+    color: hsl(var(--info-foreground));
+    font-size: 11px;
+    font-weight: 600;
+  }
+  
+  /* Professional Input System */
+  .input-professional {
+    @apply w-full rounded-[10px] border px-4 py-3 text-sm transition-all duration-200;
+    border-color: hsl(var(--border));
+    background: white;
+    font-size: 14px;
+    font-weight: 400;
+    height: 44px;
+  }
+  
+  .input-professional:focus {
+    outline: none;
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 0 3px hsl(var(--primary) / 0.1);
+  }
+  
+  /* 8pt Spacing System */
+  .space-8 { margin: 8px; }
+  .space-16 { margin: 16px; }
+  .space-24 { margin: 24px; }
+  .space-32 { margin: 32px; }
+  .space-40 { margin: 40px; }
+  .space-48 { margin: 48px; }
+  .space-56 { margin: 56px; }
+  .space-64 { margin: 64px; }
+  .space-80 { margin: 80px; }
+  .space-96 { margin: 96px; }
+  .space-120 { margin: 120px; }
+  
+  /* Section Rhythm */
+  .section-hero {
+    padding-top: 120px;
+    padding-bottom: 64px;
+  }
+  
+  @media (max-width: 768px) {
+    .section-hero {
+      padding-top: 80px;
+      padding-bottom: 48px;
+    }
+  }
+  
+  .section-standard {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+  
+  /* Horizontal Carousel for Featured Slots */
+  .featured-carousel {
+    @apply flex space-x-4 overflow-x-auto pb-4;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .featured-carousel::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .featured-carousel-item {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+  
+  /* Mobile Responsive Grid */
+  @media (max-width: 768px) {
+    .deal-card {
+      width: 100%;
+      height: auto;
+      min-height: 280px;
+    }
+    
+    .featured-carousel {
+      @apply flex space-x-3;
+    }
+    
+    .featured-carousel-item {
+      width: 85vw;
+      max-width: 320px;
+    }
+  }
+}
+
+@layer utilities {
+  /* Professional Text Utilities */
+  .text-gradient-primary {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Professional Shadow Utilities */
+  .shadow-professional {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+  }
+  
+  .shadow-professional-lg {
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+  }
+  
+  .shadow-professional-xl {
+    box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.12);
+  }
+  
+  /* Animation Utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out;
+  }
+  
+  .animate-slide-in {
+    animation: slideIn 0.4s ease-out;
+  }
+}
+
+/* Professional Animations */
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from { 
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  from { 
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to { 
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

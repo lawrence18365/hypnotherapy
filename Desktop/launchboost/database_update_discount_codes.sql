@@ -1,0 +1,180 @@
+-- Database schema updates for discount code collection system
+-- Run this in your Supabase SQL Editor
+
+-- 1. Add new columns to deals table if they don't exist
+DO $$ 
+BEGIN 
+    -- Add code_type column
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns 
+                   WHERE table_name='deals' AND column_name='code_type') THEN
+        ALTER TABLE deals ADD COLUMN code_type text CHECK (code_type IN ('universal', 'unique'));
+    END IF;
+    
+    -- Add redemption_instructions column
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns 
+                   WHERE table_name='deals' AND column_name='redemption_instructions') THEN
+        ALTER TABLE deals ADD COLUMN redemption_instructions text;
+    END IF;
+END $$;
+
+-- 2. Create deal_codes table if it doesn't exist
+CREATE TABLE IF NOT EXISTS deal_codes (
+    id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+    deal_id uuid NOT NULL REFERENCES deals(id) ON DELETE CASCADE,
+    code text NOT NULL,
+    is_universal boolean DEFAULT false,
+    is_claimed boolean DEFAULT false,
+    claimed_by uuid REFERENCES auth.users(id) ON DELETE SET NULL,
+    claimed_at timestamp with time zone,
+    created_at timestamp with time zone DEFAULT now(),
+    updated_at timestamp with time zone DEFAULT now()
+);
+
+-- 3. Add indexes for performance
+CREATE INDEX IF NOT EXISTS idx_deal_codes_deal_id ON deal_codes(deal_id);
+CREATE INDEX IF NOT EXISTS idx_deal_codes_unclaimed ON deal_codes(deal_id, is_claimed) WHERE is_claimed = false;
+CREATE INDEX IF NOT EXISTS idx_deal_codes_universal ON deal_codes(deal_id, is_universal) WHERE is_universal = true;
+CREATE UNIQUE INDEX IF NOT EXISTS idx_deal_codes_unique_code_per_deal ON deal_codes(deal_id, code);
+
+-- 4. Enable RLS (Row Level Security)
+ALTER TABLE deal_codes ENABLE ROW LEVEL SECURITY;
+
+-- 5. Create RLS policies for deal_codes
+DROP POLICY IF EXISTS "Users can view codes for their own deals" ON deal_codes;
+CREATE POLICY "Users can view codes for their own deals" ON deal_codes
+    FOR SELECT USING (
+        EXISTS (
+            SELECT 1 FROM deals 
+            WHERE deals.id = deal_codes.deal_id 
+            AND deals.founder_id = auth.uid()
+        )
+    );
+
+DROP POLICY IF EXISTS "Users can claim available codes" ON deal_codes;
+CREATE POLICY "Users can claim available codes" ON deal_codes
+    FOR UPDATE USING (
+        auth.uid() IS NOT NULL 
+        AND is_claimed = false
+        AND EXISTS (
+            SELECT 1 FROM deals 
+            WHERE deals.id = deal_codes.deal_id 
+            AND deals.status = 'approved'
+        )
+    );
+
+DROP POLICY IF EXISTS "System can insert codes" ON deal_codes;
+CREATE POLICY "System can insert codes" ON deal_codes
+    FOR INSERT WITH CHECK (true);
+
+-- 6. Create function to get available code for a deal
+CREATE OR REPLACE FUNCTION get_available_code(deal_uuid uuid, user_uuid uuid)
+RETURNS TABLE(code text, code_id uuid) 
+SECURITY DEFINER
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    universal_code_record RECORD;
+    unique_code_record RECORD;
+    deal_record RECORD;
+BEGIN
+    -- Get deal info
+    SELECT * INTO deal_record FROM deals WHERE id = deal_uuid AND status = 'approved';
+    
+    IF NOT FOUND THEN
+        RETURN;
+    END IF;
+    
+    -- Check if user already has a code for this deal
+    SELECT dc.code, dc.id INTO code, code_id 
+    FROM deal_codes dc 
+    WHERE dc.deal_id = deal_uuid 
+    AND dc.claimed_by = user_uuid;
+    
+    IF FOUND THEN
+        RETURN NEXT;
+        RETURN;
+    END IF;
+    
+    -- Check for universal code
+    SELECT dc.code, dc.id INTO universal_code_record 
+    FROM deal_codes dc 
+    WHERE dc.deal_id = deal_uuid 
+    AND dc.is_universal = true 
+    LIMIT 1;
+    
+    IF FOUND THEN
+        -- For universal codes, just return the code without claiming it
+        code := universal_code_record.code;
+        code_id := universal_code_record.id;
+        RETURN NEXT;
+        RETURN;
+    END IF;
+    
+    -- Try to claim a unique code
+    UPDATE deal_codes 
+    SET is_claimed = true, 
+        claimed_by = user_uuid, 
+        claimed_at = now()
+    WHERE id = (
+        SELECT dc.id 
+        FROM deal_codes dc 
+        WHERE dc.deal_id = deal_uuid 
+        AND dc.is_universal = false 
+        AND dc.is_claimed = false 
+        LIMIT 1
+    )
+    RETURNING deal_codes.code, deal_codes.id INTO unique_code_record;
+    
+    IF FOUND THEN
+        code := unique_code_record.code;
+        code_id := unique_code_record.id;
+        RETURN NEXT;
+    END IF;
+    
+    RETURN;
+END;
+$$;
+
+-- 7. Update existing deals to have a default code_type if needed
+UPDATE deals 
+SET code_type = 'universal' 
+WHERE code_type IS NULL;
+
+-- 8. Create function to automatically generate codes for existing deals (optional migration)
+CREATE OR REPLACE FUNCTION migrate_existing_deals_codes()
+RETURNS void
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    deal_record RECORD;
+    i INTEGER;
+BEGIN
+    -- For each deal that doesn't have codes yet
+    FOR deal_record IN 
+        SELECT d.* FROM deals d 
+        LEFT JOIN deal_codes dc ON d.id = dc.deal_id 
+        WHERE dc.id IS NULL 
+        AND d.status IN ('approved', 'pending_review')
+    LOOP
+        -- Create a universal code for each deal
+        INSERT INTO deal_codes (deal_id, code, is_universal, is_claimed)
+        VALUES (
+            deal_record.id, 
+            'LAUNCH' || substr(deal_record.id::text, 1, 8), -- Generate code from deal ID
+            true, 
+            false
+        );
+    END LOOP;
+END;
+$$;
+
+-- 9. Uncomment the line below to run the migration for existing deals
+-- SELECT migrate_existing_deals_codes();
+
+-- 10. Grant necessary permissions
+GRANT USAGE ON SCHEMA public TO authenticated;
+GRANT ALL ON deal_codes TO authenticated;
+GRANT EXECUTE ON FUNCTION get_available_code(uuid, uuid) TO authenticated;
+
+-- Success message
+SELECT 'Database schema updated successfully for discount code collection system!' as result;

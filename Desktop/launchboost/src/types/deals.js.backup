@@ -1,0 +1,276 @@
+export const DealSchema = {
+    id: 'number',
+    title: 'string',
+    description: 'string',
+    image: 'string', // URL to 1920x1080 screenshot
+    pricing: {
+      current: 'number',
+      original: 'number',
+      discount: 'number'
+    },
+    timeLeft: 'string',
+    category: 'string',
+    badge: 'string',
+    stats: {
+      users: 'string',
+      rating: 'number'
+    },
+    features: 'array',
+    isPremium: 'boolean',
+    position: 'number' // 1, 2, or 3 for premium spots
+  };
+  
+  // Sample deals data
+  export const dealsData = [
+    {
+      id: 1,
+      title: "NotionCRM - All-in-One Customer Management",
+      description: "Transform your customer relationships with this powerful Notion-based CRM system. Complete with automation workflows, lead tracking, and analytics dashboard.",
+      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1920&h=1080&fit=crop",
+      pricing: {
+        current: 29,
+        original: 149,
+        discount: 80
+      },
+      timeLeft: "3 days",
+      category: "CRM",
+      badge: "Limited Time",
+     
+      features: ["Lead Management", "Sales Pipeline", "Email Integration", "Analytics Dashboard"],
+      isPremium: true,
+      position: 1
+    },
+    {
+      id: 2,
+      title: "AI Content Generator Pro",
+      description: "Create high-quality content in seconds with our advanced AI writing assistant. Perfect for blogs, social media, and marketing copy.",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1920&h=1080&fit=crop",
+      pricing: {
+        current: 49,
+        original: 199,
+        discount: 75
+      },
+      timeLeft: "5 days",
+      category: "AI Tools",
+      badge: "Hot Deal",
+      
+      features: ["50+ Templates", "Multi-language", "SEO Optimization", "Plagiarism Check"],
+      isPremium: true,
+      position: 2
+    },
+    {
+      id: 3,
+      title: "TaskMaster - Project Management Suite",
+      description: "Streamline your team's workflow with advanced project management tools, time tracking, and collaboration features.",
+      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1920&h=1080&fit=crop",
+      pricing: {
+        current: 39,
+        original: 159,
+        discount: 75
+      },
+      timeLeft: "2 days",
+      category: "Productivity",
+      badge: "Bestseller",
+     
+      features: ["Team Collaboration", "Time Tracking", "Kanban Boards", "Reporting"],
+      isPremium: true,
+      position: 3
+    },
+    {
+      id: 4,
+      title: "Email Marketing Automation",
+      description: "Automate your email campaigns with drag-and-drop builder, advanced segmentation, and A/B testing capabilities.",
+      image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&h=600&fit=crop",
+      pricing: {
+        current: 19,
+        original: 89,
+        discount: 78
+      },
+      timeLeft: "1 week",
+      category: "Marketing",
+      badge: "New",
+      stats: {
+        users: "1.2K",
+        rating: 4.6
+      },
+      features: ["Drag & Drop Editor", "Automation", "Analytics", "Segmentation"],
+      isPremium: false,
+      emoji: "📧"
+    },
+    {
+      id: 5,
+      title: "Social Media Scheduler",
+      description: "Schedule and manage your social media posts across all platforms with AI-powered content suggestions.",
+      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop",
+      pricing: {
+        current: 25,
+        original: 99,
+        discount: 74
+      },
+      timeLeft: "4 days",
+      category: "Social Media",
+      badge: "Popular",
+      stats: {
+        users: "3.5K",
+        rating: 4.5
+      },
+      features: ["Multi-platform", "AI Suggestions", "Analytics", "Team Collaboration"],
+      isPremium: false,
+      emoji: "📱"
+    },
+    {
+      id: 6,
+      title: "Invoice Generator Pro",
+      description: "Create professional invoices in minutes with customizable templates, payment tracking, and client management.",
+      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop",
+      pricing: {
+        current: 15,
+        original: 79,
+        discount: 81
+      },
+      timeLeft: "6 days",
+      category: "Finance",
+      badge: "Hot",
+      stats: {
+        users: "2.8K",
+        rating: 4.4
+      },
+      features: ["Custom Templates", "Payment Tracking", "Client Management", "Tax Calculations"],
+      isPremium: false,
+      emoji: "💰"
+    },
+    {
+      id: 7,
+      title: "Website Builder AI",
+      description: "Build stunning websites in minutes with AI-powered design suggestions and drag-and-drop functionality.",
+      image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop",
+      pricing: {
+        current: 35,
+        original: 149,
+        discount: 76
+      },
+      timeLeft: "3 days",
+      category: "Web Design",
+      badge: "Trending",
+      stats: {
+        users: "4.1K",
+        rating: 4.8
+      },
+      features: ["AI Design", "Drag & Drop", "Mobile Responsive", "SEO Optimized"],
+      isPremium: false,
+      emoji: "🎨"
+    },
+    {
+      id: 8,
+      title: "Password Manager Plus",
+      description: "Secure your digital life with military-grade encryption, secure sharing, and dark web monitoring.",
+      image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=600&fit=crop",
+      pricing: {
+        current: 12,
+        original: 59,
+        discount: 79
+      },
+      timeLeft: "1 week",
+      category: "Security",
+      badge: "Essential",
+      stats: {
+        users: "6.2K",
+        rating: 4.9
+      },
+      features: ["Military Encryption", "Secure Sharing", "Dark Web Monitor", "Auto-fill"],
+      isPremium: false,
+      emoji: "🔒"
+    },
+    {
+      id: 9,
+      title: "Analytics Dashboard Pro",
+      description: "Transform your data into actionable insights with beautiful charts, real-time monitoring, and custom reports.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+      pricing: {
+        current: 45,
+        original: 189,
+        discount: 76
+      },
+      timeLeft: "2 days",
+      category: "Analytics",
+      badge: "Limited",
+      stats: {
+        users: "1.9K",
+        rating: 4.7
+      },
+      features: ["Real-time Data", "Custom Reports", "Beautiful Charts", "API Integration"],
+      isPremium: false,
+      emoji: "📊"
+    },
+    {
+      id: 10,
+      title: "Video Conferencing Suite",
+      description: "Host professional video meetings with screen sharing, recording, and advanced collaboration tools.",
+      image: "https://images.unsplash.com/photo-1587560699334-cc4ff634909a?w=800&h=600&fit=crop",
+      pricing: {
+        current: 28,
+        original: 119,
+        discount: 76
+      },
+      timeLeft: "5 days",
+      category: "Communication",
+      badge: "Featured",
+      stats: {
+        users: "7.3K",
+        rating: 4.6
+      },
+      features: ["HD Video", "Screen Sharing", "Recording", "Collaboration Tools"],
+      isPremium: false,
+      emoji: "🎥"
+    },
+    {
+      id: 11,
+      title: "E-commerce Store Builder",
+      description: "Launch your online store with integrated payments, inventory management, and marketing tools.",
+      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
+      pricing: {
+        current: 55,
+        original: 229,
+        discount: 76
+      },
+      timeLeft: "4 days",
+      category: "E-commerce",
+      badge: "Bestseller",
+      stats: {
+        users: "3.7K",
+        rating: 4.8
+      },
+      features: ["Payment Integration", "Inventory Management", "Marketing Tools", "Mobile App"],
+      isPremium: false,
+      emoji: "🛒"
+    },
+    {
+      id: 12,
+      title: "Cloud Storage Pro",
+      description: "Secure cloud storage with advanced encryption, file sharing, and collaboration features for teams.",
+      image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&h=600&fit=crop",
+      pricing: {
+        current: 18,
+        original: 89,
+        discount: 79
+      },
+      timeLeft: "1 week",
+      category: "Storage",
+      badge: "Reliable",
+      stats: {
+        users: "9.1K",
+        rating: 4.5
+      },
+      features: ["Advanced Encryption", "File Sharing", "Team Collaboration", "Version Control"],
+      isPremium: false,
+      emoji: "☁️"
+    }
+  ];
+  
+  // Stats data
+  export const statsData = {
+    monthlyVisits: 847000,
+    totalDeals: 156,
+    totalSavings: 2400000,
+    activeMakers: 1200
+  };

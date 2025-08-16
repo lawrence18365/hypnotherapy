@@ -1,0 +1,190 @@
+"use client";
+
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+
+// SVG Icons
+const CheckIcon = () => (
+  <svg className="h-5 w-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+  </svg>
+);
+
+const XIcon = () => (
+  <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+  </svg>
+);
+
+const MailIcon = () => (
+  <svg className="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+  </svg>
+);
+
+interface EmailCaptureModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  subscriberCount?: number;
+}
+
+export function EmailCaptureModal({ isOpen, onClose, subscriberCount }: EmailCaptureModalProps) {
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError('');
+
+    try {
+      const response = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setIsSuccess(true);
+        setEmail('');
+        // Auto-close after 2 seconds
+        setTimeout(() => {
+          setIsSuccess(false);
+          onClose();
+        }, 2000);
+      } else {
+        setError(result.error || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setError('Network error. Please check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const getSocialProofText = () => {
+    if (!subscriberCount || subscriberCount < 50) {
+      return "Join our growing community of savvy builders.";
+    }
+    return `Join ${subscriberCount}+ savvy builders who get the deals first.`;
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
+      {/* Backdrop */}
+      <div 
+        className="absolute inset-0 bg-black/60 backdrop-blur-sm" 
+        onClick={onClose}
+      />
+      
+      {/* Modal */}
+      <Card className="relative z-10 w-full max-w-md mx-4 shadow-2xl border-0">
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute right-4 top-4 text-gray-400 hover:text-gray-600 transition-colors"
+          aria-label="Close modal"
+        >
+          <XIcon />
+        </button>
+
+        <CardHeader className="text-center pb-6">
+          <div className="mx-auto mb-4 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+            <MailIcon />
+          </div>
+          <CardTitle className="text-2xl font-bold">
+            Secret Deals for Makers, Straight to Your Inbox
+          </CardTitle>
+          <CardDescription className="text-base">
+            {getSocialProofText()}
+          </CardDescription>
+        </CardHeader>
+
+        <CardContent>
+          {isSuccess ? (
+            <div className="text-center py-8">
+              <div className="mx-auto mb-4 w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                <CheckIcon />
+              </div>
+              <h3 className="text-xl font-semibold text-green-800 mb-2">You're In!</h3>
+              <p className="text-green-600">
+                Check your email for our welcome message with your first exclusive deal.
+              </p>
+            </div>
+          ) : (
+            <>
+              {/* Benefits List */}
+              <div className="space-y-3 mb-6">
+                <div className="flex items-start space-x-3">
+                  <CheckIcon />
+                  <span className="text-sm text-gray-700">
+                    <strong>Exclusive discounts</strong> you won't find anywhere else (up to 90% off)
+                  </span>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <CheckIcon />
+                  <span className="text-sm text-gray-700">
+                    <strong>Discover amazing new SaaS tools</strong> before they go mainstream
+                  </span>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <CheckIcon />
+                  <span className="text-sm text-gray-700">
+                    <strong>One email per week</strong> with the absolute best deals. No spam, ever.
+                  </span>
+                </div>
+              </div>
+
+              {/* Email Form */}
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <Input
+                    type="email"
+                    placeholder="Enter your email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    disabled={isSubmitting}
+                    className="text-base h-12"
+                  />
+                  {error && (
+                    <p className="text-red-600 text-sm mt-2">{error}</p>
+                  )}
+                </div>
+                
+                <Button 
+                  type="submit" 
+                  className="w-full h-12 text-base font-semibold bg-blue-600 hover:bg-blue-700"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                      Getting Deals...
+                    </>
+                  ) : (
+                    'Get the Deals'
+                  )}
+                </Button>
+              </form>
+
+              <p className="text-xs text-gray-500 text-center mt-4">
+                We respect your privacy. Unsubscribe at any time.
+              </p>
+            </>
+          )}
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
