@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://thehealingpathwithabbie.com.au/sitemap.xml
+
+# Block common bot paths
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /test/
+Disallow: /*.pdf$
+Disallow: /media/private/
+
+# Allow common resources
+Allow: /media/
+Allow: /styles.css
+Allow: /script.js
+Allow: /*.js$
+Allow: /*.css$
