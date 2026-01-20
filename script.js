@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Footer Year ---
     document.querySelectorAll('.js-year').forEach((el) => {
-        el.textContent = new Date().getFullYear();
+        el.textContent = '2026';
     });
 
     // --- Preloader ---

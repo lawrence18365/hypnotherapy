@@ -1,79 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy | The Healing Path</title>
+  <meta name="description" content="Privacy policy for The Healing Path with Abbie." />
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <nav class="nav" id="site-nav" style="position: sticky; top: 0; background: var(--white); border-bottom: 1px solid rgba(212,165,116,0.2);">
-    <div class="nav-shell" style="grid-template-columns: 1fr auto; padding: 0.75rem 2rem;">
-      <a href="index.html" class="brand-text">The Healing Path</a>
-      <div class="nav-links" style="gap: 1.25rem;">
-        <a href="index.html#about">About</a>
-        <a href="index.html#services">Services</a>
-        <a href="index.html#testimonials">Transformations</a>
-        <a href="index.html#contact">Contact</a>
+<body class="legal-page">
+  <nav class="nav nav--legal">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">The Healing Path</a>
+
+      <button class="nav-toggle" popovertarget="mobile-menu" aria-label="Open Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-menu desktop-menu">
+        <a href="index.html#about" class="nav-link">About</a>
+        <a href="index.html#services" class="nav-link">Services</a>
+        <a href="index.html#testimonials" class="nav-link">Stories</a>
+        <a href="index.html#faq" class="nav-link">FAQ</a>
+        <a href="index.html#contact" class="btn-nav">Book Consultation</a>
       </div>
     </div>
   </nav>
 
-  <main class="content" style="padding-top: 3rem; padding-bottom: 3rem;">
-    <header class="legal-header" style="text-align:center; margin-bottom: 2rem;">
-      <h1 style="margin-bottom:0.5rem;">Privacy Policy</h1>
-      <p class="contact-lead">Last updated: 2024</p>
-    </header>
+  <nav id="mobile-menu" popover>
+    <div class="mobile-menu-inner">
+      <button class="nav-close" popovertarget="mobile-menu" popovertargetaction="hide" aria-label="Close Menu">
+        &times;
+      </button>
+      <ul class="mobile-links">
+        <li><a href="index.html#about" onclick="document.getElementById('mobile-menu').hidePopover()">About</a></li>
+        <li><a href="index.html#services" onclick="document.getElementById('mobile-menu').hidePopover()">Services</a></li>
+        <li><a href="index.html#testimonials" onclick="document.getElementById('mobile-menu').hidePopover()">Stories</a></li>
+        <li><a href="index.html#faq" onclick="document.getElementById('mobile-menu').hidePopover()">FAQ</a></li>
+        <li><a href="index.html#contact" onclick="document.getElementById('mobile-menu').hidePopover()" class="mobile-cta">Book Consultation</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <div class="legal-content">
-      <section class="legal-section">
-        <h2>Overview</h2>
-        <p>This policy explains how The Healing Path with Abbie collects, uses and protects your personal information.</p>
-      </section>
-      <section class="legal-section">
-        <h2>Information We Collect</h2>
-        <ul>
-          <li>Contact details such as your name, email and phone.</li>
-          <li>Session notes relevant to your care and goals.</li>
-          <li>Communications sent to us (e.g., emails, messages).</li>
-        </ul>
-      </section>
-      <section class="legal-section">
-        <h2>How We Use Your Information</h2>
-        <ul>
-          <li>To schedule and conduct sessions.</li>
-          <li>To respond to enquiries and provide support.</li>
-          <li>To comply with legal obligations.</li>
-        </ul>
-      </section>
-      <section class="legal-section">
-        <h2>Data Security and Retention</h2>
-        <p>We take reasonable steps to protect your information and retain it only as long as necessary for the purposes outlined above, or as required by law.</p>
-      </section>
-      <section class="legal-section">
-        <h2>Your Rights</h2>
-        <p>You may request access to, correction or deletion of your personal information, subject to applicable law. To make a request, contact us using the details below.</p>
-      </section>
-      <section class="legal-section">
-        <h2>Contact</h2>
-        <p>Questions about this policy? Email <a href="mailto:abbie@thehealingpath.com.au">abbie@thehealingpath.com.au</a>.</p>
-      </section>
+  <header class="legal-hero">
+    <div class="container legal-hero-inner">
+      <span class="legal-kicker">Privacy Policy</span>
+      <h1 class="legal-title">Your privacy matters.</h1>
+      <p class="legal-subtitle">How The Healing Path with Abbie collects, uses, and protects your information.</p>
+      <div class="legal-meta">
+        <span>Last updated: 2026</span>
+        <span>Australia</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="legal-main">
+    <div class="container legal-layout">
+      <aside class="legal-rail">
+        <div class="legal-card">
+          <span class="legal-label">At a glance</span>
+          <ul class="legal-list">
+            <li>We collect contact details and session notes relevant to your care.</li>
+            <li>Your information is used to deliver services and meet legal obligations.</li>
+            <li>You may request access or corrections to your personal information.</li>
+          </ul>
+        </div>
+        <div class="legal-card legal-contact">
+          <span class="legal-label">Contact</span>
+          <p>Questions about this policy? Email us anytime.</p>
+          <a class="btn-primary legal-cta" href="mailto:abbie@thehealingpath.com.au">Email Abbie</a>
+        </div>
+      </aside>
+
+      <div class="legal-body">
+        <section class="legal-section">
+          <h2>Overview</h2>
+          <p>This policy explains how The Healing Path with Abbie collects, uses and protects your personal information.</p>
+        </section>
+        <section class="legal-section">
+          <h2>Information We Collect</h2>
+          <ul>
+            <li>Contact details such as your name, email and phone.</li>
+            <li>Session notes relevant to your care and goals.</li>
+            <li>Communications sent to us (e.g., emails, messages).</li>
+          </ul>
+        </section>
+        <section class="legal-section">
+          <h2>How We Use Your Information</h2>
+          <ul>
+            <li>To schedule and conduct sessions.</li>
+            <li>To respond to enquiries and provide support.</li>
+            <li>To comply with legal obligations.</li>
+          </ul>
+        </section>
+        <section class="legal-section">
+          <h2>Data Security and Retention</h2>
+          <p>We take reasonable steps to protect your information and retain it only as long as necessary for the purposes outlined above, or as required by law.</p>
+        </section>
+        <section class="legal-section">
+          <h2>Your Rights</h2>
+          <p>You may request access to, correction or deletion of your personal information, subject to applicable law. To make a request, contact us using the details below.</p>
+        </section>
+        <section class="legal-section">
+          <h2>Contact</h2>
+          <p>Questions about this policy? Email <a href="mailto:abbie@thehealingpath.com.au">abbie@thehealingpath.com.au</a>.</p>
+        </section>
+      </div>
     </div>
   </main>
 
   <footer class="footer">
-    <div class="content footer-bottom-content" style="padding:1rem 0;">
-      <p>© <span class="js-year">2024</span> The Healing Path with Abbie</p>
-      <div class="footer-legal">
-        <a href="terms.html">Terms</a>
-        <span>•</span>
-        <a href="privacy.html">Privacy</a>
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <a href="index.html" class="footer-brand">The Healing Path</a>
+          <p>Professional hypnotherapy helping you navigate the journey back to yourself.</p>
+        </div>
+        <div>
+          <h4>Menu</h4>
+          <a href="index.html#about">About</a>
+          <a href="index.html#services">Services</a>
+          <a href="index.html#testimonials">Stories</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <a href="mailto:abbie@thehealingpath.com.au">Email Me</a>
+          <a href="index.html#contact">Book Now</a>
+        </div>
+      </div>
+      <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+        <p>&copy; <span class="js-year">2026</span> The Healing Path. All rights reserved.</p>
+        <p style="max-width: 600px; font-size: 0.8rem; opacity: 0.6;">Disclaimer: Hypnotherapy is a complementary therapy and not a replacement for medical treatment.</p>
       </div>
     </div>
   </footer>
+
   <script>
     document.querySelectorAll('.js-year').forEach((el) => {
-      el.textContent = new Date().getFullYear();
+      el.textContent = '2026';
     });
   </script>
 </body>
