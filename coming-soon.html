@@ -24,6 +24,23 @@
     <!-- Brand stylesheet -->
     <link rel="stylesheet" href="styles.css">
 
+    <!-- =============================================
+         MAILERLITE: Universal embed script
+         Replace YOUR_ACCOUNT_ID below with your
+         MailerLite account ID (see instructions at
+         bottom of this file).
+         ============================================= -->
+    <script>
+        (function(w,d,e,u,f,l,n){
+            w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},
+            l=d.createElement(e),l.async=1,l.src=u,
+            n=d.getElementsByTagName(e)[0],
+            n.parentNode.insertBefore(l,n);
+        })(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+        ml('account', 'YOUR_ACCOUNT_ID');
+    </script>
+    <!-- End MailerLite Universal -->
+
     <style>
         /* =============================================
            COMING SOON — Page-specific overrides only
@@ -49,146 +66,169 @@
             margin-bottom: 2.5rem;
         }
 
-        /* --- WAITLIST FORM (in hero) --- */
-        .waitlist-form {
+        /* --- MAILERLITE FORM — Brand overrides --- */
+        /* These restyle MailerLite's injected form to
+           match the dark cinematic hero aesthetic. */
+
+        .ml-form-wrapper {
             opacity: 0;
             animation: fadeIn 1s ease-out 1.1s forwards;
         }
 
-        .waitlist-form .form-row {
-            display: flex;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
+        .ml-form-embedWrapper {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+            max-width: 100% !important;
         }
 
-        .waitlist-form .form-input {
-            flex: 1;
-            padding: 1.1rem 1.25rem;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(197, 160, 112, 0.3);
-            color: white;
-            font-family: var(--font-body);
-            font-size: 1rem;
-            border-radius: 3px;
+        .ml-form-embedBody {
+            padding: 0 !important;
+            background: transparent !important;
+        }
+
+        .ml-form-embedBody .ml-form-embedContent {
+            display: none !important;
+        }
+
+        /* Input fields */
+        .ml-form-embedBody .ml-form-fieldRow input[type="text"],
+        .ml-form-embedBody .ml-form-fieldRow input[type="email"] {
+            padding: 1.1rem 1.25rem !important;
+            background: rgba(255, 255, 255, 0.08) !important;
+            border: 1px solid rgba(197, 160, 112, 0.3) !important;
+            color: white !important;
+            font-family: var(--font-body) !important;
+            font-size: 1rem !important;
+            border-radius: 3px !important;
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            transition: all 0.3s ease;
+            transition: all 0.3s ease !important;
+            height: auto !important;
         }
 
-        .waitlist-form .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.45);
+        .ml-form-embedBody .ml-form-fieldRow input::placeholder {
+            color: rgba(255, 255, 255, 0.45) !important;
         }
 
-        .waitlist-form .form-input:focus {
-            outline: none;
-            border-color: var(--accent);
-            background: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 0 0 3px rgba(197, 160, 112, 0.15);
+        .ml-form-embedBody .ml-form-fieldRow input:focus {
+            outline: none !important;
+            border-color: var(--accent) !important;
+            background: rgba(255, 255, 255, 0.12) !important;
+            box-shadow: 0 0 0 3px rgba(197, 160, 112, 0.15) !important;
         }
 
-        .waitlist-form .btn-waitlist {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            width: 100%;
-            padding: 1.1rem 2rem;
-            border: 1px solid rgba(197, 160, 112, 0.9);
-            color: white;
-            font-family: var(--font-body);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            font-size: 0.8rem;
-            border-radius: 3px;
-            background: rgba(15, 23, 42, 0.3);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.25);
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .ml-form-embedBody .ml-form-fieldRow {
+            margin-bottom: 0.75rem !important;
         }
 
-        .waitlist-form .btn-waitlist:hover {
-            background: var(--accent);
-            border-color: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(197, 160, 112, 0.25);
+        /* Horizontal field layout on desktop */
+        .ml-form-embedBody .ml-form-formContent.horiz-form {
+            display: flex !important;
+            gap: 0.75rem !important;
         }
 
-        .waitlist-form .btn-waitlist:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
+        .ml-form-embedBody .ml-form-formContent.horiz-form .ml-form-fieldRow {
+            flex: 1 !important;
         }
 
-        .waitlist-form .btn-waitlist svg {
-            transition: transform 0.3s;
+        /* Labels */
+        .ml-form-embedBody .ml-form-fieldRow label {
+            display: none !important;
         }
 
-        .waitlist-form .btn-waitlist:hover svg {
-            transform: translateX(4px);
+        /* Submit button */
+        .ml-form-embedBody .ml-form-embedSubmit button,
+        .ml-form-embedBody .ml-form-embedSubmit .primary {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 1rem !important;
+            width: 100% !important;
+            padding: 1.1rem 2rem !important;
+            border: 1px solid rgba(197, 160, 112, 0.9) !important;
+            color: white !important;
+            font-family: var(--font-body) !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.12em !important;
+            font-size: 0.8rem !important;
+            border-radius: 3px !important;
+            background: rgba(15, 23, 42, 0.3) !important;
+            backdrop-filter: blur(6px) !important;
+            -webkit-backdrop-filter: blur(6px) !important;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.25) !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
         }
 
-        /* Consent */
-        .consent-group {
-            margin-top: 1.25rem;
-            opacity: 0;
-            animation: fadeIn 1s ease-out 1.3s forwards;
+        .ml-form-embedBody .ml-form-embedSubmit button:hover,
+        .ml-form-embedBody .ml-form-embedSubmit .primary:hover {
+            background: var(--accent) !important;
+            border-color: var(--accent) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 12px 24px rgba(197, 160, 112, 0.25) !important;
         }
 
-        .consent-label {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.5);
-            line-height: 1.6;
-            cursor: pointer;
+        /* Consent / checkbox area */
+        .ml-form-embedBody .ml-form-checkboxRow {
+            margin-top: 1rem !important;
         }
 
-        .consent-label input[type="checkbox"] {
-            appearance: none;
-            -webkit-appearance: none;
-            width: 16px;
-            height: 16px;
-            min-width: 16px;
-            border: 1px solid rgba(197, 160, 112, 0.4);
-            border-radius: 2px;
-            background: rgba(255, 255, 255, 0.05);
-            cursor: pointer;
-            position: relative;
-            top: 2px;
-            transition: all 0.2s ease;
+        .ml-form-embedBody .ml-form-checkboxRow label {
+            display: flex !important;
+            align-items: flex-start !important;
+            gap: 0.75rem !important;
+            font-size: 0.8rem !important;
+            color: rgba(255, 255, 255, 0.5) !important;
+            line-height: 1.6 !important;
+            cursor: pointer !important;
+            font-family: var(--font-body) !important;
         }
 
-        .consent-label input[type="checkbox"]:checked {
-            background: var(--accent);
-            border-color: var(--accent);
+        .ml-form-embedBody .ml-form-checkboxRow label a {
+            color: var(--accent-light) !important;
+            text-decoration: underline !important;
+            text-underline-offset: 2px !important;
         }
 
-        .consent-label input[type="checkbox"]:checked::after {
-            content: '';
-            position: absolute;
-            left: 4.5px;
-            top: 1.5px;
-            width: 4px;
-            height: 8px;
-            border: solid white;
-            border-width: 0 1.5px 1.5px 0;
-            transform: rotate(45deg);
+        .ml-form-embedBody .ml-form-checkboxRow input[type="checkbox"] {
+            accent-color: var(--accent) !important;
         }
 
-        .consent-label a {
-            color: var(--accent-light);
-            text-decoration: underline;
-            text-underline-offset: 2px;
+        /* Success state */
+        .ml-form-successBody {
+            padding: 2rem 0 !important;
+            background: transparent !important;
         }
 
-        .consent-label a:hover {
-            color: var(--accent);
+        .ml-form-successBody .ml-form-successContent {
+            color: white !important;
         }
 
+        .ml-form-successBody .ml-form-successContent h4 {
+            font-family: var(--font-heading) !important;
+            font-size: 2rem !important;
+            color: white !important;
+            font-weight: 300 !important;
+            margin-bottom: 0.75rem !important;
+        }
+
+        .ml-form-successBody .ml-form-successContent p {
+            color: rgba(255, 255, 255, 0.65) !important;
+            font-size: 1.05rem !important;
+            font-family: var(--font-body) !important;
+        }
+
+        /* Hide MailerLite branding */
+        .ml-form-embedBody .ml-form-embedPermissions,
+        .ml-form-embedWrapper .ml-form-align-center,
+        .ml-form-embedBody .ml-form-recaptcha,
+        .ml-form-successBody .ml-form-successFooter {
+            display: none !important;
+        }
+
+        /* Privacy note below the form */
         .form-note {
             margin-top: 1rem;
             font-size: 0.75rem;
@@ -200,33 +240,14 @@
             animation: fadeIn 1s ease-out 1.4s forwards;
         }
 
-        /* Success state */
-        .waitlist-success {
-            display: none;
-            padding: 2rem 0;
-        }
-
-        .waitlist-success.show {
-            display: block;
-            animation: heroFadeIn 0.8s ease-out both;
-        }
-
-        .waitlist-success h3 {
-            font-family: var(--font-heading);
-            font-size: 2rem;
-            color: white;
-            font-weight: 300;
-            margin-bottom: 0.75rem;
-        }
-
-        .waitlist-success h3 em {
-            font-style: italic;
+        .form-note a {
             color: var(--accent-light);
+            text-decoration: underline;
+            text-underline-offset: 2px;
         }
 
-        .waitlist-success p {
-            color: rgba(255, 255, 255, 0.65);
-            font-size: 1.05rem;
+        .form-note a:hover {
+            color: var(--accent);
         }
 
         /* --- ABOUT SECTION (coming-soon version) --- */
@@ -366,40 +387,20 @@
 
                     <p class="hero-lead">Evidence-based clinical hypnotherapy for anxiety, habits, and lasting change. We're putting the final touches together — join the waitlist to be first in line.</p>
 
-                    <!-- Waitlist Form -->
-                    <div class="waitlist-form">
-                        <form id="signup-form">
-                            <div class="form-row">
-                                <input type="text" name="name" class="form-input" placeholder="First Name" autocomplete="given-name">
-                                <input type="email" name="email" class="form-input" placeholder="Email Address" required autocomplete="email">
-                            </div>
-
-                            <button type="submit" class="btn-waitlist">
-                                <span>Join the Waitlist</span>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                                </svg>
-                            </button>
-
-                            <div class="consent-group">
-                                <label class="consent-label">
-                                    <input type="checkbox" name="marketing_consent" required>
-                                    <span>I'd like to receive launch updates, wellness tips, and occasional offers from The Healing Path. Unsubscribe anytime. View our <a href="privacy.html" target="_blank">Privacy Policy</a>.</span>
-                                </label>
-                            </div>
-
-                            <p class="form-note">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                                Your details are safe. We never spam or share your information.
-                            </p>
-                        </form>
-
-                        <!-- Success message -->
-                        <div class="waitlist-success" id="signup-success">
-                            <h3>You're <em>on the list.</em></h3>
-                            <p>We'll be in touch as soon as we launch. Keep an eye on your inbox.</p>
-                        </div>
+                    <!-- =============================================
+                         MAILERLITE EMBEDDED FORM
+                         Replace YOUR_FORM_ID below with your
+                         MailerLite form ID (see instructions at
+                         bottom of this file).
+                         ============================================= -->
+                    <div class="ml-form-wrapper">
+                        <div class="ml-embedded" data-form="YOUR_FORM_ID"></div>
                     </div>
+
+                    <p class="form-note">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                        Your details are safe. We never spam or share your information. <a href="privacy.html" target="_blank">Privacy Policy</a>
+                    </p>
 
                 </div>
             </div>
@@ -530,48 +531,45 @@
     <!-- Same brand script (preloader, scroll reveal, nav, etc.) -->
     <script src="script.js"></script>
 
-    <!-- Coming-soon form handling -->
-    <script>
-        // Form handling — replace with MailerLite when ready
-        const form = document.getElementById('signup-form');
-        const successEl = document.getElementById('signup-success');
+    <!--
+    =============================================
+    SETUP INSTRUCTIONS (one-time, ~10 minutes)
+    =============================================
 
-        if (form) {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
+    1. Go to https://www.mailerlite.com and create a free account.
+       (Free up to 1,000 subscribers.)
 
-                const btn = form.querySelector('.btn-waitlist');
-                const consent = form.querySelector('input[name="marketing_consent"]');
+    2. In the dashboard, go to Subscribers > Groups.
+       Create a group called "Waitlist".
 
-                if (!consent.checked) {
-                    consent.focus();
-                    return;
-                }
+    3. Go to Forms > Embedded forms > Create form.
+       - Add fields: Name + Email
+       - Set the button text to "Join the Waitlist"
+       - Under Settings, enable "Double opt-in"
+       - Assign the form to your "Waitlist" group
+       - Publish the form
 
-                btn.disabled = true;
-                btn.querySelector('span').textContent = 'Joining...';
+    4. Click "Get embed code" on your published form.
+       You'll see something like:
 
-                // ==========================================
-                // TODO: Replace this setTimeout block with
-                // your MailerLite form submission.
-                //
-                // Option A — Replace the entire <form> with
-                //   the HTML snippet from MailerLite's form
-                //   builder (easiest).
-                //
-                // Option B — MailerLite API:
-                //   fetch('https://assets.mailerlite.com/jsonp/XXXXX/forms/YYYYY/subscribe', {
-                //       method: 'POST',
-                //       body: new FormData(form)
-                //   })
-                // ==========================================
-                setTimeout(() => {
-                    form.style.display = 'none';
-                    successEl.classList.add('show');
-                }, 1200);
-            });
-        }
-    </script>
+         <script>
+           ...
+           ml('account', 'abc123def456');
+         </script>
+         <div class="ml-embedded" data-form="xyz789"></div>
+
+    5. Copy the account ID (e.g. 'abc123def456') and paste it
+       into the ml('account', '...') line in the <head> of this file.
+       (Search for YOUR_ACCOUNT_ID)
+
+    6. Copy the form ID (e.g. 'xyz789') and paste it into the
+       data-form="..." attribute in the hero section of this file.
+       (Search for YOUR_FORM_ID)
+
+    7. Push to GitHub. Done — form is live, subscribers go
+       to your Waitlist group, double opt-in handles consent.
+    =============================================
+    -->
 
 </body>
 </html>
