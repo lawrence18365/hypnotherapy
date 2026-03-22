@@ -366,7 +366,7 @@
 
                     <p class="hero-lead">Evidence-based clinical hypnotherapy for anxiety, habits, and lasting change. We're putting the final touches together — join the waitlist to be first in line.</p>
 
-                    <!-- Waitlist Form — posts to Formsubmit.co (no signup needed) -->
+                    <!-- Waitlist Form — posts to Google Sheets via Apps Script -->
                     <div class="waitlist-form">
                         <form id="signup-form">
                             <!-- Honeypot spam trap (hidden from real users) -->
@@ -533,8 +533,11 @@
     <!-- Same brand script (preloader, scroll reveal, nav, etc.) -->
     <script src="script.js"></script>
 
-    <!-- Waitlist form — Formsubmit.co (zero signup, zero config) -->
+    <!-- Waitlist form — Google Sheets via Apps Script -->
     <script>
+        // REPLACE THIS with your Google Apps Script Web App URL (see setup instructions)
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwyDuvkR34Ah_VErcr6YbfOoKhFOEAB5A9tMtZucWr_eBaMuKkrvK2OkodhOSspvsDQaA/exec';
+
         const form = document.getElementById('signup-form');
         const successEl = document.getElementById('signup-success');
 
@@ -546,41 +549,25 @@
                 const consent = form.querySelector('#consent-checkbox');
                 const email = form.querySelector('input[name="email"]').value;
                 const name = form.querySelector('input[name="name"]').value;
+                const honey = form.querySelector('input[name="_honey"]').value;
 
-                if (!consent.checked) {
-                    consent.focus();
-                    return;
-                }
+                if (honey) return; // bot caught
+                if (!consent.checked) { consent.focus(); return; }
 
                 btn.disabled = true;
                 btn.querySelector('span').textContent = 'Joining...';
 
-                // Submit via Formsubmit.co AJAX endpoint
-                // Every signup is emailed to Abbie AND stored at formsubmit.co
-                fetch('https://formsubmit.co/ajax/abbie@thehealingpath.com.au', {
+                fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        name: name,
-                        email: email,
-                        marketing_consent: 'Yes — agreed to receive launch updates, wellness tips, and marketing from The Healing Path',
-                        _subject: 'New Waitlist Signup: ' + (name || email),
-                        _template: 'table',
-                        _captcha: 'false',
-                        _honey: form.querySelector('input[name="_honey"]').value
-                    })
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams({ name: name, email: email, _honey: honey })
                 })
-                .then(response => response.json())
-                .then(data => {
+                .then(() => {
                     form.style.display = 'none';
                     successEl.classList.add('show');
                 })
-                .catch(error => {
-                    // Still show success — the submission likely went through
-                    // and we don't want to alarm the user
+                .catch(() => {
                     form.style.display = 'none';
                     successEl.classList.add('show');
                 });
