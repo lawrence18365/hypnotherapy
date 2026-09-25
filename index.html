@@ -337,306 +337,307 @@
             }
         }
 
-        /* --- OFFERINGS (editorial) --- */
+        /* --- OFFERINGS: continues the hero (navy, gold hairline frame, gold italic emphasis) --- */
         .offerings {
-            padding: var(--section-padding) 0 0;
-            background: var(--surface-1);
-            color: var(--text-muted);
+            position: relative;
+            background: var(--primary);
+            color: rgba(255, 255, 255, 0.72);
+            padding: clamp(4rem, 8vw, 7rem) 0;
         }
 
-        .offerings .wrap {
-            max-width: 1240px;
-            margin: 0 auto;
-            padding: 0 5vw;
+        .offerings-frame {
+            position: relative;
+            margin: 0 3vw;
+            border: 1px solid rgba(197, 160, 112, 0.15);
+            padding: clamp(3.5rem, 7vw, 6rem) 0 0;
+        }
+
+        .offerings-frame::before,
+        .offerings-frame::after {
+            content: '';
+            position: absolute;
+            background: var(--accent);
+        }
+
+        .offerings-frame::before { top: -1px; left: 2vw; width: 120px; height: 1px; }
+        .offerings-frame::after { top: 30px; left: -1px; width: 1px; height: 120px; }
+
+        .offerings .inner { padding: 0 2vw; }
+
+        .offerings h2,
+        .offerings h3 {
+            color: white;
+            font-weight: 300;
+        }
+
+        .offerings h2 em,
+        .offerings h3 em {
+            font-style: italic;
+            font-weight: 400;
+            color: var(--accent-light);
         }
 
         .offerings-head {
-            display: grid;
-            grid-template-columns: 7fr 4fr;
-            gap: 4rem;
-            align-items: end;
-            margin-bottom: clamp(2.5rem, 5vw, 4rem);
+            max-width: 620px;
+            margin-bottom: clamp(3rem, 6vw, 5rem);
         }
 
         .offerings-head h2 {
-            font-size: clamp(3rem, 6.5vw, 5.75rem);
-            font-weight: 300;
-            line-height: 0.98;
-            letter-spacing: -0.02em;
-            margin: 0;
+            font-size: clamp(2.75rem, 6vw, 4.5rem);
+            line-height: 1.05;
+            margin: 0 0 1.75rem;
         }
-
-        .offerings-head h2 em { color: var(--primary); }
 
         .offerings-head p {
             font-size: 1.15rem;
-            line-height: 1.6;
-            max-width: 30ch;
-            margin: 0 0 0.9rem;
-        }
-
-        /* One row per offering: name | words | price */
-        .offer-row {
-            display: grid;
-            grid-template-columns: 5fr 7fr;
-            column-gap: 4rem;
-            padding: clamp(2.75rem, 5vw, 4rem) 0;
-        }
-
-        .offer-row h3 {
-            font-size: clamp(2.2rem, 3.4vw, 3rem);
             font-weight: 300;
-            line-height: 1;
-            letter-spacing: -0.01em;
-            margin: 0 0 0.9rem;
-        }
-
-        .offer-facts {
-            font-size: 0.95rem;
-            color: var(--text-muted);
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
             margin: 0;
         }
 
-        .offer-title {
-            grid-column: 1 / -1;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 1.5rem;
-            padding-bottom: 1.25rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(15, 23, 42, 0.14);
+        /* Rows */
+        .offer-row {
+            display: grid;
+            grid-template-columns: 4fr 5fr 3fr;
+            gap: 3rem;
+            padding: clamp(2.5rem, 4.5vw, 3.5rem) 0;
+            border-top: 1px solid rgba(197, 160, 112, 0.15);
         }
 
-        .offer-title h3 { margin: 0 0 0.6rem !important; }
+        .offer-row h3 {
+            font-size: clamp(2.2rem, 3.4vw, 2.9rem);
+            line-height: 1.05;
+            margin: 0 0 0.75rem;
+        }
 
-        .price {
-            font-family: var(--font-heading);
-            font-size: 2.25rem;
-            font-weight: 400;
-            line-height: 1;
-            color: var(--primary);
-            white-space: nowrap;
+        .offer-meta {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0;
         }
 
         .offer-line {
             font-family: var(--font-heading);
             font-style: italic;
+            font-size: clamp(1.4rem, 2vw, 1.65rem);
+            line-height: 1.3;
+            color: var(--accent-light);
+            margin: 0 0 1rem;
+        }
+
+        .offer-copy {
+            font-size: 1rem;
             font-weight: 300;
-            font-size: clamp(1.7rem, 2.6vw, 2.35rem);
-            line-height: 1.2;
-            color: var(--primary);
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.75);
             margin: 0;
-            max-width: 17ch;
+            max-width: 52ch;
         }
 
-        p.offer-copy {
-            font-size: 1.02rem;
-            max-width: 56ch;
-            margin: 0 0 1.5rem;
-        }
-
-        /* Flagship: the main offering, given room */
-        .flagship {
-            padding: clamp(1rem, 3vw, 2rem) 0 clamp(4.5rem, 9vw, 7.5rem);
-        }
-
-        .flagship .offer-row { padding: 0; }
-
-        .flagship .price { font-size: 3rem; }
-
-        .flagship h3 {
-            font-size: clamp(3.25rem, 6.5vw, 5.75rem);
-            line-height: 0.95;
-            letter-spacing: -0.02em;
-        }
-
-        .flagship p.offer-copy { font-size: 1.1rem; }
-
-        .flagship blockquote {
-            margin: 0;
+        .offer-quote {
+            margin: 1.5rem 0 0;
+            padding-left: 1rem;
+            border-left: 1px solid rgba(197, 160, 112, 0.5);
             font-family: var(--font-heading);
             font-style: italic;
-            font-weight: 300;
-            font-size: clamp(1.9rem, 3vw, 2.6rem);
-            line-height: 1.15;
-            color: var(--primary);
-            max-width: 15ch;
+            font-size: 1.25rem;
+            color: white;
         }
 
-        .flagship cite {
+        .offer-quote cite {
             display: block;
-            margin-top: 1rem;
+            margin-top: 0.35rem;
             font-family: var(--font-body);
             font-style: normal;
             font-size: 0.85rem;
-            color: var(--text-muted);
+            color: rgba(255, 255, 255, 0.55);
         }
 
-        .text-link {
-            display: inline-block;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--primary);
-            text-decoration: none;
-            padding-bottom: 0.2rem;
-            background: linear-gradient(var(--accent), var(--accent)) 0 100% / 100% 1px no-repeat;
-            transition: background-size 0.35s ease, color 0.3s ease;
+        .offer-buy {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 1.25rem;
         }
 
-                .text-link:hover { color: #8A6A40; background-size: 40% 1px; }
-
-        .text-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-
-        /* Nature immersion: the one image moment */
-        .immersion {
-            background: var(--primary);
-            color: rgba(255, 255, 255, 0.72);
-        }
-
-        .immersion-hero {
-            position: relative;
-            height: clamp(320px, 52vw, 640px);
-            background: url('media/hero-bg.jpg') center 35% / cover no-repeat;
-        }
-
-        .immersion-intro {
-            display: grid;
-            grid-template-columns: 5fr 7fr;
-            column-gap: 4rem;
-            align-items: end;
-            margin-top: clamp(3rem, 6vw, 5rem);
-        }
-
-        .immersion-intro h3 {
-            color: white;
-            font-size: clamp(3rem, 6.5vw, 5.75rem);
+        .offer-price {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
             font-weight: 300;
-            line-height: 0.95;
-            letter-spacing: -0.02em;
-            margin: 0;
+            line-height: 1;
+            color: white;
         }
 
-        .immersion-intro p {
-            max-width: 46ch;
+        /* Same button language as the hero waitlist button */
+        .btn-line {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.85rem;
+            padding: 0.95rem 1.5rem;
+            border: 1px solid rgba(197, 160, 112, 0.9);
+            border-radius: 3px;
+            background: rgba(15, 23, 42, 0.3);
+            color: white;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .btn-line svg { transition: transform 0.3s; }
+
+        .btn-line:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(197, 160, 112, 0.25);
+        }
+
+        .btn-line:hover svg { transform: translateX(4px); }
+
+        .btn-line:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 3px; }
+
+        /* Nature Immersion: the forest again, cropped to the canopy */
+        .immersion {
+            position: relative;
+            margin-top: clamp(1rem, 3vw, 2rem);
+            border-top: 1px solid rgba(197, 160, 112, 0.15);
+        }
+
+        .immersion-visual {
+            position: relative;
+            min-height: clamp(360px, 48vw, 560px);
+            display: flex;
+            align-items: flex-end;
+            background: url('media/hero-bg.jpg') center 18% / cover no-repeat;
+        }
+
+        .immersion-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(135deg, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.7) 35%, rgba(15,23,42,0.2) 60%, transparent 75%),
+                linear-gradient(to top, rgba(15,23,42,1) 0%, transparent 45%);
+        }
+
+        .immersion-visual .inner {
+            position: relative;
+            max-width: 620px;
+            padding-bottom: clamp(2rem, 4vw, 3rem);
+        }
+
+        .immersion-visual h3 {
+            font-size: clamp(2.75rem, 6vw, 4.5rem);
+            line-height: 1.05;
+            margin: 0 0 1.25rem;
+            text-shadow: 0 14px 32px rgba(15, 23, 42, 0.45);
+        }
+
+        .immersion-visual p {
             font-size: 1.1rem;
+            font-weight: 300;
+            line-height: 1.8;
             color: rgba(255, 255, 255, 0.85);
             margin: 0;
         }
 
-        .offerings .immersion-body {
-            padding-top: clamp(3rem, 6vw, 4.5rem);
-            padding-bottom: clamp(3.5rem, 7vw, 6rem);
-        }
-
-        .immersion-tiers {
+        .tiers {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 0 3rem;
+            padding-top: 1rem;
         }
 
-        .immersion-tiers h4 {
-            font-family: var(--font-heading);
-            font-size: 2rem;
-            font-weight: 300;
-            color: white;
-            margin: 0 0 0.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            gap: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+        .tier {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-content: start;
+            gap: 0 1.5rem;
+            padding: 2rem 0 2.5rem;
+            border-top: 1px solid rgba(197, 160, 112, 0.15);
         }
 
-        .immersion-tiers h4 span { color: white; }
+        .tier h3 { font-size: 2.2rem; margin: 0 0 0.5rem; }
 
-        .immersion-tiers .dur {
-            display: block;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin: 1rem 0 0.9rem;
-        }
+        .tier .offer-price { font-size: 2.2rem; grid-row: 1; grid-column: 2; }
 
-        .immersion-tiers p {
-            font-size: 1rem;
-            line-height: 1.75;
-            margin: 0 0 1.5rem;
-        }
+        .tier .offer-meta,
+        .tier .offer-copy,
+        .tier .btn-line { grid-column: 1 / -1; }
 
-        .immersion .text-link { color: white; }
-        .immersion .text-link:hover { color: var(--accent-light); }
+        .tier .offer-copy { margin: 1rem 0 1.75rem; }
+
+        .tier .btn-line { justify-self: start; }
 
         .immersion-note {
-            margin-top: 3.5rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.12);
-            font-size: 0.88rem;
+            margin: 0;
+            font-size: 0.85rem;
             color: rgba(255, 255, 255, 0.6);
         }
 
-        .immersion-note span { display: block; max-width: 80ch; }
-
-        .immersion-note { color: rgba(255, 255, 255, 0.85) !important; font-size: 0.95rem !important; }
-
-        /* Free call: a closing invitation, not a card */
+        /* Free call: closes the section like the hero's waitlist */
         .free-call {
-            padding: clamp(4rem, 9vw, 7.5rem) 0;
-            text-align: center;
-            background: var(--surface-1);
+            display: grid;
+            grid-template-columns: 7fr 5fr;
+            gap: 3rem;
+            align-items: end;
+            margin-top: clamp(3.5rem, 7vw, 5.5rem);
+            padding: clamp(2.5rem, 5vw, 3.5rem) 2vw clamp(3rem, 6vw, 4.5rem);
+            border-top: 1px solid rgba(197, 160, 112, 0.15);
         }
 
-        .free-call p.big {
-            font-family: var(--font-heading);
-            font-weight: 300;
-            font-size: clamp(2rem, 4.2vw, 3.4rem);
-            line-height: 1.15;
-            color: var(--primary);
-            max-width: 22ch;
-            margin: 0 auto 1.25rem;
+        .free-call h3 {
+            font-size: clamp(2.2rem, 4vw, 3.25rem);
+            line-height: 1.1;
+            margin: 0 0 1rem;
         }
 
-        .free-call p.big em { color: var(--primary); }
-
-        .free-call .offer-link,
-        .offer-link.cta-sentence {
-            text-transform: none;
-            letter-spacing: 0.01em;
-            font-size: 0.95rem;
-            font-weight: 600;
-            padding: 1rem 2rem;
-        }
-
-        .free-call p.small {
-            max-width: 52ch;
-            margin: 0 auto 2.25rem;
-            font-size: 1.02rem;
-        }
+        .free-call .btn-line { width: 100%; padding: 1.1rem 2rem; font-size: 0.8rem; }
 
         .free-call .policy {
-            margin-top: 3rem;
-            font-size: 0.82rem;
-            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 1rem 0 0;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
         }
 
         @media (max-width: 968px) {
-            .offerings-head,
+            .offerings-frame { margin: 0 4vw; }
+            .offerings .inner { padding: 0 6vw; }
+            .free-call { padding-left: 6vw; padding-right: 6vw; }
             .offer-row,
-            .immersion-intro,
-            .immersion-tiers {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+            .free-call { grid-template-columns: 1fr; gap: 1.25rem; }
+            .tiers { grid-template-columns: 1fr; }
+            .offer-buy {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 0.5rem;
             }
+            .offer-price { font-size: 2.1rem; }
+            .immersion-visual::before {
+                background: linear-gradient(to top, rgba(15,23,42,1) 0%, rgba(15,23,42,0.75) 55%, rgba(15,23,42,0.35) 100%);
+            }
+        }
 
-            .immersion-tiers { gap: 3rem; }
-            .offer-row { gap: 0.75rem; }
-            .price { font-size: 1.9rem; }
-            .flagship .price { font-size: 2.25rem; }
-            .flagship h3 { font-size: clamp(3rem, 13vw, 3.5rem); }
-            .offer-title { flex-wrap: wrap; }
-            .flagship blockquote { margin: 0 0 1rem; }
-            .offer-line { margin-bottom: 0.75rem; }
-            .offerings-head { gap: 1.25rem; }
+        @media (max-width: 480px) {
+            .offerings-frame { margin: 0; border-left: 0; border-right: 0; }
+            .offerings-frame::after { display: none; }
+            .btn-line { padding: 0.9rem 1.2rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .btn-line, .btn-line svg { transition: none; }
+            .btn-line:hover { transform: none; }
         }
 
         /* Shared outline button (About, perks) */
@@ -804,67 +805,82 @@
 
         <!-- Offerings -->
         <section id="offerings" class="offerings">
-            <div class="wrap">
-                <div class="offerings-head reveal">
-                    <h2>Ways we can<br><em>work together</em></h2>
-                    <p>Every session is shaped around you, whether that's an hour on the phone or a full day by the river.</p>
+            <div class="offerings-frame">
+                <div class="inner">
+                    <div class="offerings-head reveal">
+                        <h2>Find Your Way<br><em>Back to You.</em></h2>
+                        <p>Every session is shaped around you, whether that's an hour on the phone or a full day by the river.</p>
+                    </div>
+
+                    <article class="offer-row reveal">
+                        <div>
+                            <h3>Clarity Session</h3>
+                            <p class="offer-meta">60 minutes, by phone or Zoom</p>
+                        </div>
+                        <div>
+                            <p class="offer-line">Sometimes you don't need more answers. You need space to hear your own.</p>
+                            <p class="offer-copy">A focused hour for when you feel overwhelmed or unsure of your next move. We'll untangle what's on your mind and leave you with clear, practical next steps.</p>
+                        </div>
+                        <div class="offer-buy">
+                            <span class="offer-price">$120</span>
+                            <a href="#top" class="btn-line" data-interest="Clarity Session" aria-label="Enquire about a Clarity Session">Enquire <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        </div>
+                    </article>
+
+                    <article class="offer-row reveal">
+                        <div>
+                            <h3>Return to You</h3>
+                            <p class="offer-meta">2.5 hours, one-to-one</p>
+                        </div>
+                        <div>
+                            <p class="offer-line">Reconnect, heal and transform.</p>
+                            <p class="offer-copy">My deepest session, for when you feel stuck, disconnected or ready for real change. We slow right down, find what's been holding you back and gently let it go, using whatever you need on the day, from coaching and EFT tapping to Reiki, inner-child work and shamanic drumming.</p>
+                            <blockquote class="offer-quote">&ldquo;I feel clearer today and more aligned than before.&rdquo;<cite>Emily, after a session with Abbie</cite></blockquote>
+                        </div>
+                        <div class="offer-buy">
+                            <span class="offer-price">$333</span>
+                            <a href="#top" class="btn-line" data-interest="Return to You" aria-label="Enquire about Return to You">Enquire <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        </div>
+                    </article>
                 </div>
 
-                <article class="offer-row reveal">
-                    <div class="offer-title"><div><h3>Clarity Session</h3><p class="offer-facts">60 minutes, by phone or Zoom</p></div><span class="price">$120</span></div>
-                    <p class="offer-line">Sometimes you don't need more answers. You need space to hear your own.</p>
-                    <div>
-                        <p class="offer-copy">A focused hour for when you feel overwhelmed or unsure of your next move. We'll untangle what's on your mind and leave you with clear, practical next steps.</p>
-                        <a href="#top" class="text-link" data-interest="Clarity Session">Enquire about a Clarity Session</a>
+                <article class="immersion reveal">
+                    <div class="immersion-visual" role="img" aria-label="Light falling through rainforest canopy">
+                        <div class="inner">
+                            <h3>Nature<br><em>Immersion.</em></h3>
+                            <p>Step away from everyday life. Healing, coaching and ceremony, with bare feet on the earth, time by the river and a nourishing meal.</p>
+                        </div>
+                    </div>
+                    <div class="inner">
+                        <div class="tiers">
+                            <div class="tier">
+                                <h3>Half Day</h3>
+                                <span class="offer-price">$444</span>
+                                <p class="offer-meta">About 4 hours, one-to-one</p>
+                                <p class="offer-copy">Energy healing and coaching, EFT tapping and intuitive practice, barefoot time in nature and by the river, a nourishing meal, a release ceremony and quiet time to integrate.</p>
+                                <a href="#top" class="btn-line" data-interest="Half Day Nature Immersion" aria-label="Enquire about a half day Nature Immersion">Enquire <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                            </div>
+                            <div class="tier">
+                                <h3>Full Day</h3>
+                                <span class="offer-price">$666</span>
+                                <p class="offer-meta">About 7&ndash;8 hours, one-to-one</p>
+                                <p class="offer-copy">Everything in the half day, slowed right down. More time on the water, kayaking or canoeing, with deeper healing and womb work, and space to reflect before you go home.</p>
+                                <a href="#top" class="btn-line" data-interest="Full Day Nature Immersion" aria-label="Enquire about a full day Nature Immersion">Enquire <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                            </div>
+                        </div>
+                        <p class="immersion-note">Kayaking, canoeing and river time are optional and weather-dependent.</p>
                     </div>
                 </article>
-            </div>
 
-            <article class="flagship reveal">
-                <div class="wrap">
-                    <div class="offer-row">
-                        <div class="offer-title"><div><h3>Return to You</h3><p class="offer-facts">2.5 hours, one-to-one</p></div><span class="price">$333</span></div>
-                        <div>
-                            <blockquote>&ldquo;I feel clearer today and more aligned than before.&rdquo;<cite>Emily, after a session with Abbie</cite></blockquote>
-                        </div>
-                        <div>
-                            <p class="offer-copy">My deepest session, for when you feel stuck, disconnected or ready for real change. We slow right down, find what's been holding you back and gently let it go, using whatever you need on the day, from coaching and EFT tapping to Reiki, inner-child work and shamanic drumming.</p>
-                            <a href="#top" class="text-link" data-interest="Return to You">Enquire about Return to You</a>
-                        </div>
+                <div class="free-call reveal">
+                    <div>
+                        <h3>Not sure where to begin?<br><em>Start with a free call.</em></h3>
+                        <p class="offer-copy">A free 15-minute call to talk about where you are and what you'd love to change.</p>
                     </div>
-                </div>
-            </article>
-
-            <article class="immersion reveal">
-                <div class="immersion-hero" role="img" aria-label="Sunlit rainforest waterfall"></div>
-                <div class="wrap immersion-intro">
-                    <h3>Nature<br>Immersion</h3>
-                    <p>Step away from everyday life. Healing, coaching and ceremony, with bare feet on the earth, time by the river and a nourishing meal.</p>
-                </div>
-                <div class="wrap immersion-body">
-                    <div class="immersion-tiers">
-                        <div>
-                            <h4>Half day <span>$444</span></h4>
-                            <span class="dur">About 4 hours, one-to-one</span>
-                            <p>Energy healing and coaching, EFT tapping and intuitive practice, barefoot time in nature and by the river, a nourishing meal, a release ceremony and quiet time to integrate.</p>
-                            <a href="#top" class="text-link" data-interest="Half Day Nature Immersion">Enquire about a half day</a>
-                        </div>
-                        <div>
-                            <h4>Full day <span>$666</span></h4>
-                            <span class="dur">About 7&ndash;8 hours, one-to-one</span>
-                            <p>Everything in the half day, slowed right down. More time on the water, kayaking or canoeing, with deeper healing and womb work, and space to reflect before you go home.</p>
-                            <a href="#top" class="text-link" data-interest="Full Day Nature Immersion">Enquire about a full day</a>
-                        </div>
+                    <div>
+                        <a href="#top" class="btn-line" data-interest="Free Clarity Call">Book a Free Clarity Call <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        <p class="policy">All sessions have a 24-hour cancellation policy; late cancellations and no-shows are charged in full.</p>
                     </div>
-                    <p class="immersion-note"><span>Kayaking, canoeing and river time are optional and weather-dependent. All sessions have a 24-hour cancellation policy; late cancellations and no-shows are charged in full.</span></p>
-                </div>
-            </article>
-
-            <div class="free-call reveal">
-                <div class="wrap">
-                    <p class="big">Not sure where to begin? Start with a conversation.</p>
-                    <p class="small">A free 15-minute call to talk about where you are and what you'd love to change.</p>
-                    <a href="#top" class="offer-link offer-link--primary" data-interest="Free Clarity Call">Book a free call</a>
                 </div>
             </div>
         </section>
