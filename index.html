@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Healing Path | Clinical Hypnotherapy — Launching Soon</title>
-    <meta name="description" content="Evidence-based hypnotherapy for anxiety, confidence, and habit change. Launching soon in Sydney. Join the waitlist for early access and exclusive offers.">
+    <title>The Healing Path with Abbie | Holistic Healing &amp; Coaching for Women</title>
+    <meta name="description" content="Holistic healing and coaching for women — NLP, EFT tapping, Reiki, inner-child work and nature immersions with Abbie. Free 15-minute clarity calls. Join the waitlist for early access.">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="The Healing Path — Launching Soon">
-    <meta property="og:description" content="Evidence-based hypnotherapy for anxiety, confidence, and habit change. Join the waitlist.">
+    <meta property="og:title" content="The Healing Path with Abbie — Holistic Healing for Women">
+    <meta property="og:description" content="Reconnect, heal and feel like yourself again. Holistic coaching, NLP, EFT, Reiki and nature immersions for women.">
     <meta property="og:type" content="website">
 
     <!-- Favicon -->
@@ -84,7 +84,7 @@
         }
 
         .waitlist-form .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.45);
+            color: rgba(255, 255, 255, 0.65);
         }
 
         .waitlist-form .form-input:focus {
@@ -138,6 +138,33 @@
             transform: translateX(4px);
         }
 
+        /* Enquiry chip (set from offering buttons) */
+        .interest-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.9rem;
+            padding: 0.45rem 0.6rem 0.45rem 1rem;
+            border: 1px solid rgba(197, 160, 112, 0.5);
+            border-radius: 50px;
+            background: rgba(15, 23, 42, 0.45);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .interest-chip[hidden] { display: none; }
+        .interest-chip strong { color: var(--accent-light); font-weight: 600; }
+
+        .interest-chip button {
+            background: none;
+            border: 0;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+            line-height: 1;
+            padding: 0 0.35rem;
+            cursor: pointer;
+        }
+
         /* Consent */
         .consent-group {
             margin-top: 1.25rem;
@@ -150,7 +177,7 @@
             align-items: flex-start;
             gap: 0.75rem;
             font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.72);
             line-height: 1.6;
             cursor: pointer;
         }
@@ -200,7 +227,7 @@
         .form-note {
             margin-top: 1rem;
             font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.35);
+            color: rgba(255, 255, 255, 0.6);
             display: flex;
             align-items: center;
             gap: 0.4rem;
@@ -251,6 +278,18 @@
             margin-bottom: 1.5rem;
         }
 
+        .cs-about .about-img-wrapper {
+            max-width: 460px;
+            justify-self: center;
+            width: 100%;
+        }
+
+        .cs-about .about-img {
+            height: auto;
+            aspect-ratio: 22 / 25;
+            object-position: center top;
+        }
+
         /* --- PERKS SECTION --- */
         .perks {
             padding: var(--section-padding) 0;
@@ -297,6 +336,492 @@
                 padding: 2rem;
             }
         }
+
+        /* --- OFFERINGS --- */
+        /* Deeper bronze for small gold text on light surfaces (AA contrast) */
+        .offerings { --accent-ink: #8A6A40; }
+
+        .offerings {
+            padding: var(--section-padding) 0;
+            background: var(--surface-1);
+        }
+
+        .offerings-head {
+            max-width: 680px;
+            margin: 0 auto 4.5rem;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.9rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--accent-ink);
+            margin-bottom: 1.25rem;
+        }
+
+        .eyebrow::before,
+        .eyebrow::after {
+            content: '';
+            width: 28px;
+            height: 1px;
+            background: currentColor;
+            opacity: 0.6;
+        }
+
+        .offerings-head h2 { margin-bottom: 1.25rem; }
+
+        .offerings-head .lede {
+            font-family: var(--font-heading);
+            font-style: italic;
+            font-size: 1.5rem;
+            line-height: 1.45;
+            color: var(--text-muted);
+        }
+
+        .offer-tagline {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-ink);
+            margin-bottom: 0.9rem;
+        }
+
+        .offer-price {
+            font-family: var(--font-heading);
+            font-size: 2.75rem;
+            font-weight: 400;
+            line-height: 1;
+            color: var(--primary);
+        }
+
+        .offer-price small {
+            display: block;
+            margin-top: 0.5rem;
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .offer-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .offer-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.9rem;
+            border: 1px solid var(--border-light);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .offer-meta i { color: var(--accent); font-size: 0.75rem; }
+
+        .offer-quote {
+            font-family: var(--font-heading);
+            font-style: italic;
+            font-size: 1.35rem;
+            line-height: 1.45;
+            color: var(--primary);
+            padding-left: 1.25rem;
+            border-left: 1px solid var(--accent);
+            margin: 0.5rem 0 2rem;
+        }
+
+        .offer-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.75rem;
+            border: 1px solid var(--accent);
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--primary);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .offer-link svg { transition: transform 0.3s; }
+
+        .offer-link:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(197, 160, 112, 0.25);
+        }
+
+        .offer-link:hover svg { transform: translateX(4px); }
+
+        .offer-link--primary {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .offer-link:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .offer-policy {
+            font-size: 0.8rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+        }
+
+        /* Start here — free call band */
+        .offer-intro {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 3rem;
+            align-items: center;
+            padding: 3rem 3.5rem;
+            margin-bottom: 2rem;
+            background: var(--surface-2);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-intro::after {
+            content: '';
+            position: absolute;
+            right: -80px;
+            top: -80px;
+            width: 260px;
+            height: 260px;
+            border: 1px solid rgba(197, 160, 112, 0.25);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .offer-intro h3 {
+            font-size: clamp(2rem, 3vw, 2.6rem);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .offer-intro p {
+            max-width: 620px;
+            font-size: 1.05rem;
+        }
+
+        .offer-intro-side {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 1.5rem;
+            text-align: right;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Two sessions */
+        .offer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .offer-card {
+            display: flex;
+            flex-direction: column;
+            padding: 3.5rem;
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .offer-card h3 {
+            font-size: clamp(2rem, 3vw, 2.6rem);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .offer-card p { font-size: 1rem; margin-bottom: 1rem; }
+
+        .offer-card-foot {
+            margin-top: auto;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        /* Signature card — dark */
+        .offer-card--signature {
+            background: var(--primary);
+            border-color: rgba(197, 160, 112, 0.35);
+            color: rgba(255, 255, 255, 0.75);
+            position: relative;
+        }
+
+        .offer-card--signature h3,
+        .offer-card--signature .offer-price,
+        .offer-card--signature .offer-meta span,
+        .offer-card--signature .offer-quote { color: white; }
+
+        .offer-card--signature .offer-tagline { color: var(--accent); }
+        .offer-card--signature .offer-meta span { border-color: rgba(197, 160, 112, 0.35); }
+        .offer-card--signature .offer-card-foot { border-color: rgba(255, 255, 255, 0.12); }
+        .offer-card--signature .offer-price small,
+        .offer-card--signature .offer-policy { color: rgba(255, 255, 255, 0.6); }
+
+        .offer-card--signature .offer-link {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .offer-card--signature .offer-link:hover {
+            background: var(--accent-light);
+            color: var(--primary);
+        }
+
+        .offer-badge {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            padding: 0.35rem 0.9rem;
+            border: 1px solid var(--accent);
+            border-radius: 50px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-light);
+        }
+
+        .offer-modalities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 1.1rem;
+            margin: 0.25rem 0 1.5rem;
+            padding: 0;
+            list-style: none;
+            font-size: 0.85rem;
+            color: var(--accent-light);
+        }
+
+        .offer-modalities li::before {
+            content: '✦';
+            margin-right: 0.45rem;
+            font-size: 0.6rem;
+            opacity: 0.8;
+        }
+
+        /* Nature immersion */
+        .immersion {
+            display: grid;
+            grid-template-columns: 5fr 7fr;
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+
+        .immersion-visual {
+            position: relative;
+            min-height: 420px;
+            background: url('media/hero-bg.jpg') center / cover no-repeat;
+        }
+
+        .immersion-visual::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.1) 0%, rgba(15, 23, 42, 0.75) 100%);
+        }
+
+        .immersion-visual-text {
+            position: absolute;
+            left: 2.5rem;
+            right: 2.5rem;
+            bottom: 2.5rem;
+            z-index: 1;
+            font-family: var(--font-heading);
+            font-style: italic;
+            font-size: 1.6rem;
+            line-height: 1.35;
+            color: white;
+        }
+
+        .immersion-body { padding: 3.5rem; }
+
+        .immersion-body h3 {
+            font-size: clamp(2rem, 3vw, 2.6rem);
+            font-weight: 400;
+            margin-bottom: 1.25rem;
+        }
+
+        .immersion-body > p { font-size: 1rem; margin-bottom: 1rem; }
+
+        .tiers {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 2.5rem 0;
+        }
+
+        .tier {
+            display: flex;
+            flex-direction: column;
+            padding: 1.75rem 0 0;
+            border-top: 1px solid var(--accent);
+        }
+
+        .tier-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .tier h4 {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .tier .offer-price { font-size: 2rem; }
+
+        .tier-duration {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+        }
+
+        .tier ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem;
+        }
+
+        .tier li {
+            position: relative;
+            padding-left: 1.4rem;
+            font-size: 0.92rem;
+            line-height: 1.55;
+            margin-bottom: 0.5rem;
+        }
+
+        .tier li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6em;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .tier p { font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.5rem; }
+
+        .tier .offer-link { margin-top: auto; align-self: flex-start; }
+
+        .immersion-note {
+            padding: 1.5rem 1.75rem;
+            background: rgba(197, 160, 112, 0.08);
+            border-radius: var(--radius-sm);
+            font-size: 0.92rem;
+        }
+
+        .immersion-note strong {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 0.35rem;
+        }
+
+        .immersion-close {
+            font-family: var(--font-heading);
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-top: 1.75rem;
+        }
+
+        @media (max-width: 1200px) {
+            .immersion { grid-template-columns: 1fr; }
+            .immersion-visual { min-height: 320px; }
+        }
+
+        @media (max-width: 968px) {
+            .offerings-head { margin-bottom: 2.5rem; }
+            .offerings-head .lede { font-size: 1.25rem; }
+
+            .offer-intro {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2.25rem 1.75rem;
+            }
+
+            .offer-intro-side {
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            .offer-grid { grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
+            .offer-card { padding: 2.5rem 1.75rem; }
+            .offer-badge { top: 1.25rem; right: 1.25rem; }
+            .offer-card--signature .offer-tagline { margin-top: 1.75rem; }
+
+            .immersion-visual { min-height: 260px; }
+            .immersion-visual-text { left: 1.75rem; right: 1.75rem; bottom: 1.75rem; font-size: 1.35rem; }
+            .immersion-body { padding: 2.5rem 1.75rem; }
+            .tiers { grid-template-columns: 1fr; }
+            .tiers { gap: 2.5rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .offer-card, .offer-link, .offer-link svg { transition: none; }
+            .offer-card:hover, .offer-link:hover { transform: none; }
+        }
+
+        .results-note {
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* --- CLOSING WAITLIST CTA (perks) --- */
+        .perks-cta { margin-top: 3.5rem; }
 
         /* --- FOOTER SIMPLIFICATION --- */
         .cs-footer .footer-content {
@@ -361,7 +886,7 @@
 
     <main>
         <!-- Hero Section — same cinematic style, with waitlist form -->
-        <header class="hero hero--coming-soon">
+        <header class="hero hero--coming-soon" id="top">
             <div class="hero-overlay"></div>
             <div class="hero-frame"></div>
 
@@ -373,7 +898,7 @@
                         <span class="title-line title-emphasis"><em>Subconscious Story.</em></span>
                     </h1>
 
-                    <p class="hero-lead">Evidence-based clinical hypnotherapy for anxiety, habits, and lasting change. We're putting the final touches together — join the waitlist to be first in line.</p>
+                    <p class="hero-lead">Holistic healing and coaching for women ready to reconnect, heal and feel like themselves again. Bookings open soon — join the waitlist to be first in line.</p>
 
                     <!-- Waitlist Form — posts to Google Sheets via Apps Script -->
                     <div class="waitlist-form">
@@ -381,9 +906,12 @@
                             <!-- Honeypot spam trap (hidden from real users) -->
                             <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
+                            <input type="hidden" name="interest" id="interest-input" value="">
+                            <p class="interest-chip" id="interest-chip" hidden>Enquiring about <strong id="interest-name"></strong><button type="button" id="interest-clear" aria-label="Clear enquiry">&times;</button></p>
+
                             <div class="form-row">
-                                <input type="text" name="name" class="form-input" placeholder="First Name" autocomplete="given-name">
-                                <input type="email" name="email" class="form-input" placeholder="Email Address" required autocomplete="email">
+                                <input type="text" name="name" class="form-input" placeholder="First Name" aria-label="First name" autocomplete="given-name">
+                                <input type="email" name="email" class="form-input" placeholder="Email Address" aria-label="Email address" required autocomplete="email">
                             </div>
 
                             <button type="submit" class="btn-waitlist">
@@ -409,7 +937,7 @@
                         <!-- Success message -->
                         <div class="waitlist-success" id="signup-success">
                             <h3>You're <em>on the list.</em></h3>
-                            <p>We'll be in touch as soon as we launch. Keep an eye on your inbox.</p>
+                            <p>Abbie will be in touch personally. Keep an eye on your inbox.</p>
                         </div>
                     </div>
 
@@ -421,6 +949,210 @@
                 <div class="scroll-line"></div>
             </div>
         </header>
+
+        <!-- Offerings -->
+        <section id="offerings" class="offerings">
+            <div class="container">
+                <div class="offerings-head text-center reveal">
+                    <span class="eyebrow">Ways to work together</span>
+                    <h2>Offerings</h2>
+                    <p class="lede">Gentle, personalised support for women ready to reconnect, heal and feel like themselves again.</p>
+                </div>
+
+                <!-- Start here: Free Clarity Call -->
+                <article class="offer-intro reveal">
+                    <div>
+                        <span class="offer-tagline">Start here &bull; No pressure &bull; Just clarity</span>
+                        <h3>Free Clarity Call</h3>
+                        <p>Feeling stuck, lost or unsure of your next step? This free 15-minute call is a chance to share where you are, what you're navigating and what you'd love to change. We'll explore whether my approach feels right for you and what kind of support may be helpful.</p>
+                        <p class="offer-policy" style="margin-top: 0.75rem;">A simple conversation to help you feel heard, supported and a little clearer about what comes next.</p>
+                    </div>
+                    <div class="offer-intro-side">
+                        <div class="offer-price">Free<small>15 min call</small></div>
+                        <a href="#top" class="offer-link offer-link--primary" data-interest="Free Clarity Call">
+                            <span>Request your free call</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <div class="offer-grid">
+                    <!-- Clarity Session -->
+                    <article class="offer-card reveal">
+                        <span class="offer-tagline">Gain perspective &bull; Find direction</span>
+                        <h3>Clarity Session</h3>
+                        <div class="offer-meta">
+                            <span><i class="fas fa-clock" aria-hidden="true"></i>60 minutes</span>
+                            <span><i class="fas fa-phone-alt" aria-hidden="true"></i>Phone or Zoom</span>
+                        </div>
+                        <p>A focused 1:1 phone session for when you feel overwhelmed, stuck or unsure of your next move.</p>
+                        <p>Using holistic coaching, NLP and intuitive guidance, we'll unpack what's on your mind, identify the patterns keeping you stuck and bring clarity to what you truly want.</p>
+                        <p>You'll leave with a clearer perspective, renewed confidence and practical next steps.</p>
+                        <p class="offer-quote">Sometimes you don't need more answers &mdash; you need space to hear your own.</p>
+                        <div class="offer-card-foot">
+                            <div class="offer-price">$120<small>Per session</small></div>
+                            <a href="#top" class="offer-link" data-interest="Clarity Session">
+                            <span>Register interest</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Return to You (signature) -->
+                    <article class="offer-card offer-card--signature reveal">
+                        <span class="offer-badge">Signature</span>
+                        <span class="offer-tagline">Reconnect &bull; Heal &bull; Transform</span>
+                        <h3>Return to You</h3>
+                        <div class="offer-meta">
+                            <span><i class="fas fa-clock" aria-hidden="true"></i>2.5 hours</span>
+                            <span><i class="fas fa-user" aria-hidden="true"></i>1:1 journey</span>
+                        </div>
+                        <p>A personalised 1:1 journey for women feeling stuck, disconnected or ready for meaningful change.</p>
+                        <ul class="offer-modalities" aria-label="Modalities">
+                            <li>Holistic coaching</li>
+                            <li>NLP</li>
+                            <li>EFT tapping</li>
+                            <li>Reiki &amp; energy healing</li>
+                            <li>Inner-child work</li>
+                            <li>Intuitive practices</li>
+                            <li>Shamanic drumming</li>
+                        </ul>
+                        <p>Through my unique blend of practices, we'll explore what's keeping you stuck and create space for greater confidence, clarity and connection. Together, we'll work to release limiting patterns, reconnect with your purpose and create a life that feels more authentic to you.</p>
+                        <p class="offer-quote">For when you're ready to stop feeling disconnected and start feeling like yourself again.</p>
+                        <p class="offer-policy" style="margin: 0 0 1.5rem;">24-hour cancellation policy. Late cancellations and no-shows are charged at the full session price.</p>
+                        <div class="offer-card-foot">
+                            <div class="offer-price">$333<small>2.5 hour session</small></div>
+                            <a href="#top" class="offer-link" data-interest="Return to You">
+                            <span>Register interest</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Nature Immersion -->
+                <article class="immersion reveal">
+                    <div class="immersion-visual" role="img" aria-label="Sunlit rainforest waterfall">
+                        <p class="immersion-visual-text">Come as you are. Leave feeling grounded, nourished, lighter and more connected to yourself.</p>
+                    </div>
+                    <div class="immersion-body">
+                        <span class="offer-tagline">Reset &bull; Reconnect &bull; Restore</span>
+                        <h3>Nature Immersion</h3>
+                        <p>Step away from everyday life and reconnect with yourself through nature, healing and meaningful experiences.</p>
+                        <p>A personalised experience combining energy healing, holistic coaching, EFT tapping, intuitive practices and shamanic drumming, with time in nature, nourishing food and integration.</p>
+
+                        <div class="tiers">
+                            <div class="tier">
+                                <div class="tier-head">
+                                    <h4>Half Day</h4>
+                                    <div class="offer-price">$444</div>
+                                </div>
+                                <div class="tier-duration">1:1 &nbsp;·&nbsp; Approx. 4 hours</div>
+                                <ul>
+                                    <li>Energy healing &amp; personalised coaching</li>
+                                    <li>EFT tapping and intuitive practices</li>
+                                    <li>Barefoot nature connection</li>
+                                    <li>River time</li>
+                                    <li>Nourishing meal</li>
+                                    <li>Nature-based activity</li>
+                                    <li>Release work or ceremony</li>
+                                    <li>Integration and reflection</li>
+                                </ul>
+                                <a href="#top" class="offer-link" data-interest="Half Day Nature Immersion">
+                            <span>Register interest</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <div class="tier">
+                                <div class="tier-head">
+                                    <h4>Full Day</h4>
+                                    <div class="offer-price">$666</div>
+                                </div>
+                                <div class="tier-duration">Approx. 7&ndash;8 hours</div>
+                                <p>A deeper experience with more time to slow down, explore and integrate.</p>
+                                <ul>
+                                    <li>Everything in the half day experience</li>
+                                    <li>Additional river time &mdash; kayaking or canoeing</li>
+                                    <li>Deeper healing work</li>
+                                    <li>Womb work</li>
+                                    <li>Extended reflection and integration</li>
+                                </ul>
+                                <a href="#top" class="offer-link" data-interest="Full Day Nature Immersion">
+                            <span>Register interest</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="immersion-note">
+                            <strong>A note about your experience</strong>
+                            Every immersion is personalised to you. Activities such as kayaking, canoeing and river experiences are optional and dependent on weather, water conditions and suitability on the day.
+                        </div>
+                        <p class="offer-policy">24-hour cancellation policy. Late cancellations and no-shows are charged at the full session price.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- About Section — same layout as main site -->
+        <section id="about" class="cs-about bg-surface-2">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-img-wrapper reveal">
+                        <img src="media/abbie-portrait.jpg" alt="Portrait of Abbie, founder of The Healing Path" class="about-img">
+                    </div>
+                    <div class="about-text reveal">
+                        <span class="hero-tag" style="margin-bottom: 2rem; background: rgba(197,160,112,0.1); border: none; color: var(--primary);">
+                            Abbie — Holistic Healer &amp; Coach
+                        </span>
+                        <h2 style="margin-top: 1rem; margin-bottom: 1.5rem;">Hi, I'm Abbie.</h2>
+                        <p style="margin-bottom: 1.5rem;">I'm a holistic practitioner with a background in clinical hypnotherapy and psychotherapy. I bring together holistic coaching, NLP, EFT tapping, Reiki and energy healing, inner-child work and shamanic drumming &mdash; often out in nature &mdash; to help women gently move through what's been keeping them stuck.</p>
+                        <p style="margin-bottom: 2.5rem;">My approach is warm, non-judgmental and shaped entirely around you. Whether we meet for a call, a session or a day by the river, my intention is the same: to give you the space to reconnect with yourself.</p>
+                        <a href="#offerings" class="offer-link">
+                            <span>Explore offerings</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials — same dark section as main site -->
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+                <div class="text-center reveal">
+                    <h2>Kind Words</h2>
+                    <p style="max-width: 600px; margin: 0 auto; color: rgba(255,255,255,0.7);">Real stories from individuals who have walked this path and rediscovered their inner strength.</p>
+                </div>
+
+                <div class="testimonial-grid" style="margin-top: 5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+                    <div class="testimonial-card reveal">
+                        <div class="quote-icon" style="font-family: var(--font-heading); font-size: 4rem; color: var(--accent); opacity: 0.3; line-height: 1; margin-bottom: -1rem;">&ldquo;</div>
+                        <p class="testimonial-text">I found Abbie at one of the lowest points in my life. I was abusing alcohol daily for years, deep in addiction and self-doubt. I spent two full days with Abbie undergoing hypnotherapy and psychotherapy. This process completely changed my belief system and I haven't touched alcohol since.</p>
+                        <div class="testimonial-meta">
+                            <span class="testimonial-title">Sarah</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card reveal">
+                        <div class="quote-icon" style="font-family: var(--font-heading); font-size: 4rem; color: var(--accent); opacity: 0.3; line-height: 1; margin-bottom: -1rem;">&ldquo;</div>
+                        <p class="testimonial-text">Thanks again Abbie for yesterday's session. The Reiki was exactly what I needed! You have such a gift at what you do. I feel clearer today and more aligned than before. Your space is also amazing! The perfect retreat.</p>
+                        <div class="testimonial-meta">
+                            <span class="testimonial-title">Emily</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card reveal">
+                        <div class="quote-icon" style="font-family: var(--font-heading); font-size: 4rem; color: var(--accent); opacity: 0.3; line-height: 1; margin-bottom: -1rem;">&ldquo;</div>
+                        <p class="testimonial-text">Thank you so much, you've given me the power to believe in myself and for that I will be here forever grateful. No one lifts people like you are doing and it really is making all the difference.</p>
+                        <div class="testimonial-meta">
+                            <span class="testimonial-title">Jessica</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="results-note">Shared with permission. Every person's experience is unique, and individual results vary.</p>
+            </div>
+        </section>
 
         <!-- Perks — What waitlist members get -->
         <section class="perks">
@@ -453,60 +1185,12 @@
                         <p>Simple, evidence-based techniques to start feeling better right now.</p>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- About Section — same layout as main site -->
-        <section id="about" class="cs-about bg-surface-2">
-            <div class="container">
-                <div class="about-grid">
-                    <div class="about-img-wrapper reveal">
-                        <img src="pic_of_founder_abbie.jpg" alt="Abbie - Clinical Hypnotherapist" class="about-img">
-                    </div>
-                    <div class="about-text reveal">
-                        <span class="hero-tag" style="margin-bottom: 2rem; background: rgba(197,160,112,0.1); border: none; color: var(--primary);">
-                            Abbie — Clinical Hypnotherapist
-                        </span>
-                        <h2 style="margin-top: 1rem; margin-bottom: 1.5rem;">Hi, I'm Abbie.</h2>
-                        <p style="margin-bottom: 1.5rem;">I'm a Clinical Hypnotherapist and Psychotherapist currently completing my professional accreditation. My approach is warm, non-judgmental, and tailored specifically to your needs.</p>
-                        <p style="margin-bottom: 2.5rem;">I combine modern neuroscience with timeless therapeutic techniques to help you access the root cause of your struggles — your subconscious mind. I can't wait to share this work with you.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials — same dark section as main site -->
-        <section id="testimonials" class="testimonials">
-            <div class="container">
-                <div class="text-center reveal">
-                    <h2>Kind Words</h2>
-                    <p style="max-width: 600px; margin: 0 auto; color: rgba(255,255,255,0.7);">Real stories from individuals who have walked this path and rediscovered their inner strength.</p>
-                </div>
-
-                <div class="testimonial-grid" style="margin-top: 5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
-                    <div class="testimonial-card reveal">
-                        <div class="quote-icon" style="font-family: var(--font-heading); font-size: 4rem; color: var(--accent); opacity: 0.3; line-height: 1; margin-bottom: -1rem;">&ldquo;</div>
-                        <p class="testimonial-text">I found Abbie at one of the lowest points in my life. I was abusing alcohol daily for years, deep in addiction and self-doubt. I spent two full days with Abbie undergoing hypnotherapy and psychotherapy. This process completely changed my belief system and I haven't touched alcohol since. My addiction is now gone.</p>
-                        <div class="testimonial-meta">
-                            <span class="testimonial-title">Sarah</span>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card reveal">
-                        <div class="quote-icon" style="font-family: var(--font-heading); font-size: 4rem; color: var(--accent); opacity: 0.3; line-height: 1; margin-bottom: -1rem;">&ldquo;</div>
-                        <p class="testimonial-text">Thanks again Abbie for yesterday's session. The Reiki was exactly what I needed! You have such a gift at what you do. I feel clearer today and more aligned than before. Your space is also amazing! The perfect retreat.</p>
-                        <div class="testimonial-meta">
-                            <span class="testimonial-title">Emily</span>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card reveal">
-                        <div class="quote-icon" style="font-family: var(--font-heading); font-size: 4rem; color: var(--accent); opacity: 0.3; line-height: 1; margin-bottom: -1rem;">&ldquo;</div>
-                        <p class="testimonial-text">Thank you so much, you've given me the power to believe in myself and for that I will be here forever grateful. No one lifts people like you are doing and it really is making all the difference.</p>
-                        <div class="testimonial-meta">
-                            <span class="testimonial-title">Jessica</span>
-                        </div>
-                    </div>
+                <div class="text-center perks-cta reveal">
+                    <a href="#top" class="offer-link">
+                        <span>Join the Waitlist</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+                    </a>
                 </div>
             </div>
         </section>
@@ -519,7 +1203,7 @@
             <div class="footer-content">
                 <div>
                     <a href="#" class="footer-brand">The Healing Path</a>
-                    <p>Professional hypnotherapy helping you navigate the journey back to yourself.</p>
+                    <p>Holistic healing and coaching for women, guiding you on the journey back to yourself.</p>
                 </div>
                 <div>
                     <h4>Legal</h4>
@@ -528,7 +1212,7 @@
                 </div>
                 <div>
                     <h4>Connect</h4>
-                    <a href="mailto:abbie@thehealingpath.com.au">Email Me</a>
+                    <a href="#top" data-interest="General enquiry">Get in touch</a>
                     <span style="color:rgba(255,255,255,0.4);">Instagram &bull; Facebook</span>
                 </div>
             </div>
@@ -549,6 +1233,23 @@
 
         const form = document.getElementById('signup-form');
         const successEl = document.getElementById('signup-success');
+        const interestInput = document.getElementById('interest-input');
+        const interestChip = document.getElementById('interest-chip');
+
+        // Offering buttons carry what the visitor is enquiring about into the form
+        document.querySelectorAll('[data-interest]').forEach(function(link) {
+            link.addEventListener('click', function() {
+                interestInput.value = link.dataset.interest;
+                document.getElementById('interest-name').textContent = link.dataset.interest;
+                interestChip.hidden = false;
+                setTimeout(function() { form.querySelector('input[name="name"]').focus({ preventScroll: true }); }, 700);
+            });
+        });
+
+        document.getElementById('interest-clear').addEventListener('click', function() {
+            interestInput.value = '';
+            interestChip.hidden = true;
+        });
 
         if (form) {
             form.addEventListener('submit', function(e) {
@@ -570,7 +1271,7 @@
                     method: 'POST',
                     mode: 'no-cors',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: new URLSearchParams({ name: name, email: email, consent: 'Yes', _honey: honey })
+                    body: new URLSearchParams({ name: name, email: email, consent: 'Yes', interest: interestInput.value || 'Waitlist', _honey: honey })
                 })
                 .then(() => {
                     form.style.display = 'none';
