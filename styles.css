@@ -1580,6 +1580,7 @@ textarea.form-input {
 
 .footer a { display: block; margin-bottom: 0.75rem; transition: color 0.3s; }
 .footer a:hover { color: var(--accent); }
+.footer-credit a { color: inherit; display: inline; margin-bottom: 0; }
 
 /* --- ANIMATIONS --- */
 .reveal {
